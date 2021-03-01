@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "F:\DIY\PCB\72比例坦克控制板\STM8L101_PPM\Project\settings\STM8L101F3.Debug.general.xcl" --backend -f "F:\DIY\PCB\72比例坦克控制板\STM8L101_PPM\Project\settings\STM8L101F3.Debug.driver.xcl" 
+"D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\WanBean\Desktop\excavator_esc\Project\settings\STM8L101F3.Debug.general.xcl" --backend -f "C:\Users\WanBean\Desktop\excavator_esc\Project\settings\STM8L101F3.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "F:\DIY\PCB\72比例坦克控制板\STM8L101_PPM\Project\settings\STM8L101F3.Debug.general.xcl" "--debug_file=%~1" --backend -f "F:\DIY\PCB\72比例坦克控制板\STM8L101_PPM\Project\settings\STM8L101F3.Debug.driver.xcl" 
+"D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\WanBean\Desktop\excavator_esc\Project\settings\STM8L101F3.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\WanBean\Desktop\excavator_esc\Project\settings\STM8L101F3.Debug.driver.xcl" 
 
 @echo off 
 :end

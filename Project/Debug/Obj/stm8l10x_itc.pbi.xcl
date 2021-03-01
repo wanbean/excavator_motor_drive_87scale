@@ -1,22 +1,22 @@
-"C:\Users\WanBean\Desktop\STM8L101_PPM\Libraries\src\stm8l10x_itc.c"
+"C:\Users\WanBean\Desktop\excavator_esc\Libraries\src\stm8l10x_itc.c"
 -std=c99
 -ferror-limit=0
 -I
-C:\Users\WanBean\Desktop\STM8L101_PPM\Project\..\APP
+C:\Users\WanBean\Desktop\excavator_esc\Project\..\APP
 -I
-C:\Users\WanBean\Desktop\STM8L101_PPM\Project\..\Libraries\inc
+C:\Users\WanBean\Desktop\excavator_esc\Project\..\Libraries\inc
 -I
-C:\Users\WanBean\Desktop\STM8L101_PPM\Project\..\User
+C:\Users\WanBean\Desktop\excavator_esc\Project\..\User
 -I
 D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\inc
 -I
 D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\inc\c
 -I
-C:\Users\WanBean\Desktop\STM8L101_PPM\APP
+C:\Users\WanBean\Desktop\excavator_esc\APP
 -I
-C:\Users\WanBean\Desktop\STM8L101_PPM\Libraries\inc
+C:\Users\WanBean\Desktop\excavator_esc\Libraries\inc
 -I
-C:\Users\WanBean\Desktop\STM8L101_PPM\User
+C:\Users\WanBean\Desktop\excavator_esc\User
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
