@@ -1,8 +1,9 @@
 ﻿C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\STM8L101F3.pbd
-C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\Light_Control.pbi
+C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\main.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\Motor_Control.pbi
-C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\Servo_Control.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\Receiver_PPM.pbi
+C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\Servo_Control.pbi
+C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\SoftPwm_Control.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_awu.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_beep.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_clk.pbi
@@ -12,6 +13,7 @@ C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_flash.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_gpio.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_i2c.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_irtim.pbi
+C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_it.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_itc.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_iwdg.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_rst.pbi
@@ -21,5 +23,4 @@ C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_tim3.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_tim4.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_usart.pbi
 C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_wfe.pbi
-C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\main.pbi
-C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_it.pbi
+C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\Switch_Control.pbi

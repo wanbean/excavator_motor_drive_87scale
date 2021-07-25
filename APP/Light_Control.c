@@ -20,32 +20,7 @@ uint8_t Turning_Signal_Lamp_Delay = 0;
 uint8_t Plice_Lamp_Delay = 0;
 LAMP_MODE Lamp_Mode={Head_Lamp_OFF,Stop_Lamp_OFF,Backup_Lamp_OFF,Turning_Signal_OFF};
 /* ---------------------------------------Private function prototypes  ----------------------------- */
-/**
-  * @brief  灯光引脚初始化
-  * @param  None
-  * @retval None
-  */
-void LightGPIO_Init(void)
-{
-  //大灯
-  GPIO_Init(Head_Lamp_PORT, Head_Lamp_PIN, GPIO_Mode_Out_PP_High_Fast);
-  //倒车灯
-  GPIO_Init(BackUp_Lamp_PORT, BackUp_Lamp_PIN, GPIO_Mode_Out_PP_High_Fast);
-  //刹车灯
-  GPIO_Init(Stop_Lamp_PORT, Stop_Lamp_PIN, GPIO_Mode_Out_PP_High_Fast);
-  //左转向灯
-  GPIO_Init(Turning_Signal_Lamp_L_PORT, Turning_Signal_Lamp_L_PIN, GPIO_Mode_Out_PP_High_Fast);
-  //右转向灯
-  GPIO_Init(Turning_Signal_Lamp_R_PORT, Turning_Signal_Lamp_R_PIN, GPIO_Mode_Out_PP_High_Fast);
-  //使能RST为输出
-//  RST_GPOutputEnable();
-  //红警灯
-  GPIO_Init(Police_Lamp_R_PORT, Police_Lamp_R_PIN, GPIO_Mode_Out_PP_High_Fast);
-  //蓝警灯
-  GPIO_Init(Police_Lamp_B_PORT, Police_Lamp_B_PIN, GPIO_Mode_Out_PP_High_Fast);
-  
-  GPIO_ResetBits(Head_Lamp_PORT,Head_Lamp_PIN);
-  GPIO_ResetBits(BackUp_Lamp_PORT,BackUp_Lamp_PIN);
+
   GPIO_ResetBits(Stop_Lamp_PORT,Stop_Lamp_PIN);
   GPIO_ResetBits(Turning_Signal_Lamp_L_PORT,Turning_Signal_Lamp_L_PIN);
   GPIO_ResetBits(Turning_Signal_Lamp_R_PORT,Turning_Signal_Lamp_R_PIN);

@@ -30,7 +30,6 @@
 #include "Receiver_PPM.h"
 #include "Servo_Control.h"
 #include "Motor_Control.h"
-#include "Light_Control.h"
 /** @addtogroup STM8L10x_StdPeriph_Templates
   * @{
   */
@@ -293,51 +292,6 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 25)
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-//  static uint8_t PPM
-//  //周期16ms
-//  //刹车灯用的延时
-//  if(Stop_Lamp_Delay > 1)
-//  {
-//    Stop_Lamp_Delay--;
-//  }
-//  //转向灯用的延时
-//  if(Turning_Signal_Lamp_Delay > 0)
-//  {
-//    Turning_Signal_Lamp_Delay--;
-//  }  
-//  //警灯用的延时
-//  if(Plice_Lamp_Delay > 0)
-//  {
-//    Plice_Lamp_Delay--;
-//  }  
-//  PWM_CurrentData.Fail_Safe ++;
-//  //丢失接收机PWM,进入失控保护
-//  if(PWM_CurrentData.Fail_Safe >= 20)
-//  {
-//    PWM_CurrentData.Fail_Safe = 20;
-//  }
-  //PWM_Process();
-  if(Stop_Lamp_Delay > 1)
-  {
-    Stop_Lamp_Delay--;
-  }
-  //转向灯用的延时
-  if(Turning_Signal_Lamp_Delay > 0)
-  {
-    Turning_Signal_Lamp_Delay--;
-  }  
-  //警灯用的延时
-  if(Plice_Lamp_Delay > 0)
-  {
-    Plice_Lamp_Delay--;
-  }  
-  PWM_CurrentData.Fail_Safe ++;
-  //丢失接收机PWM,进入失控保护
-  if(PWM_CurrentData.Fail_Safe >= 15)
-  {
-    PWM_CurrentData.Fail_Safe = 15;
-  }
-  GPIO_ToggleBits(GPIOA,GPIO_Pin_3);//翻转GPD0输出状态
   TIM4_ClearITPendingBit(TIM4_IT_Update);
 }
 

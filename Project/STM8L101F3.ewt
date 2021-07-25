@@ -2102,13 +2102,16 @@
         <group>
             <name>Control</name>
             <file>
-                <name>$PROJ_DIR$\..\APP\Light_Control.c</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\APP\Motor_Control.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\APP\Servo_Control.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\APP\SoftPwm_Control.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\APP\Switch_control.c</name>
             </file>
         </group>
         <group>

@@ -9,7 +9,6 @@
 #define _RECEIVER_PPM_H
 /* ---------------------------------------Include--------------------------------------------------- */
 #include "stm8l10x.h"
-#include "Light_Control.h"
 #include "Motor_Control.h"
 #include "Servo_Control.h"
 #include "stm8l10x_usart.h"
@@ -17,7 +16,7 @@
 /* ---------------------------------------Private typedef ------------------------------------------ */
 typedef struct
 {
-  uint8_t PWM_Ready;
+//  uint8_t PWM_Ready;
   uint8_t Fail_Safe;
   uint16_t PWM_Max[8];
   uint16_t PWM_Mid[8];
@@ -91,7 +90,6 @@ extern CONTROL_DATA Control_Data;
 extern volatile uint8_t PPMCapture_Pried;
 /* ---------------------------------------Private function prototypes  ----------------------------- */
 void PPM_Reveiver_Init(void);
-int16_t ABS(int16_t Data);
 void PWM_Process(void);
 void PPM_Decode(void);
 

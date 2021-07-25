@@ -29,34 +29,19 @@
 #define Police_Lamp_M2_DelayTime 10 //警灯闪烁系数 20ms一个数
 #define Police_Lamp_M3_DelayTime 84 //警灯闪烁系数 20ms一个数
 /* ---------------------------------------Private macro -------------------------------------------- */
-//大灯控制引脚
-#define Head_Lamp_PORT                  GPIOB
-#define Head_Lamp_PIN                   GPIO_Pin_3
-//倒车灯控制引脚
-#define BackUp_Lamp_PORT                GPIOB
-#define BackUp_Lamp_PIN                 GPIO_Pin_4
-//刹车灯控制引脚
-#define Stop_Lamp_PORT                  GPIOB
-#define Stop_Lamp_PIN                   GPIO_Pin_5
-//左转向灯控制引脚
-#define Turning_Signal_Lamp_L_PORT      GPIOB
-#define Turning_Signal_Lamp_L_PIN       GPIO_Pin_6
-//右转向灯控制引脚
-#define Turning_Signal_Lamp_R_PORT      GPIOB
-#define Turning_Signal_Lamp_R_PIN       GPIO_Pin_7
-//红色警灯灯控制引脚
-#define Police_Lamp_R_PORT              GPIOC
-#define Police_Lamp_R_PIN               GPIO_Pin_2
-//蓝色警灯灯控制引脚
-#define Police_Lamp_B_PORT              GPIOC
-#define Police_Lamp_B_PIN               GPIO_Pin_3
+//大臂灯控制引脚
+#define Boom_Lamp_PORT                  GPIOA
+#define Boom_Lamp_PIN                   GPIO_Pin_2
+//机身灯控制引脚
+#define Shell_Lamp_PORT                GPIOA
+#define Shell_Lamp_PIN                 GPIO_Pin_6
 /* ---------------------------------------Private variables ---------------------------------------- */
 typedef enum 
 {
   Head_Lamp_OFF = 0,
   Head_Lamp_LB,
   Head_Lamp_HB
-}HEAD_LAMP_MODE;
+}_LAMP_MODE;
 
 typedef enum 
 {

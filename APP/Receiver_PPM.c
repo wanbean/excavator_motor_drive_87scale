@@ -1,12 +1,13 @@
 /*****************************************************************************************************
-* @file    Receiver_PPM.c									     * 
-* @author  WanBean										     *
-* @version V1.0                                                         			     *
-* @date    2020-03-27    									     *
-* @brief                                               					             *
+* @file    Receiver_PPM.c									                                                           * 
+* @author  WanBean										                                                               *
+* @version V1.0                                                         			                       *
+* @date    2020-03-27    									                                                           *
+* @brief                                               					                                     *
 ******************************************************************************************************/
 /* ---------------------------------------Include--------------------------------------------------- */
 #include "Receiver_PPM.h"
+#include <stdlib.h>
 
 /* ---------------------------------------Private typedef ------------------------------------------ */
 
@@ -16,14 +17,12 @@
 /* ---------------------------------------Private variables ---------------------------------------- */
 
 /* ---------------------------------------Private function prototypes  ----------------------------- */
-PWM_CURRENTDATA PWM_CurrentData = {3,
-                                   2000,2000,
-                                   1520,1520,
-                                   1000,1000,
-                                   1520,1520,1520,1520,1520,1520,1520,1520,
-                                   0,
-                                   0,
-                                   0};
+PWM_CURRENTDATA PWM_CurrentData = {.Fail_Safe = 0,
+                                   .PWM_Max = {PWM_MaxRef,PWM_MaxRef,PWM_MaxRef,PWM_MaxRef,PWM_MaxRef,PWM_MaxRef,PWM_MaxRef,PWM_MaxRef},
+                                   .PWM_Mid = {PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef},
+                                   .PWM_Min = {PWM_MinRef,PWM_MinRef,PWM_MinRef,PWM_MinRef,PWM_MinRef,PWM_MinRef,PWM_MinRef,PWM_MinRef},
+                                   .PWM_Data = {PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef},
+                                   .PWM_Status = {3,3,3,3,3,3,3,3}};
 CONTROL_DATA Control_Data;
 volatile uint8_t PPMCapture_Pried = 0; 
 
@@ -87,7 +86,6 @@ static void Read_Flash_PWM(void)
   Val_L = FLASH_ReadByte(PWM1_MINAdd + 1);
   PWM_CurrentData.PWM_Min[0] = (uint16_t)(Val_H << 8) + Val_L;
 
-  
   //读取PWM1_Mid Flash中保存的数据
   Val_H = FLASH_ReadByte(PWM1_MIDAdd);
   Val_L = FLASH_ReadByte(PWM1_MIDAdd + 1);
@@ -98,86 +96,128 @@ static void Read_Flash_PWM(void)
   Val_L = FLASH_ReadByte(PWM1_MAXAdd + 1);
   PWM_CurrentData.PWM_Max[0] = (uint16_t)(Val_H << 8) + Val_L;
   
-  //读取PWM1_Max Flash中保存的数据
+  //读取PWM1_Min Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM2_MINAdd);
+  Val_L = FLASH_ReadByte(PWM2_MINAdd + 1);
+  PWM_CurrentData.PWM_Min[1] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Mid Flash中保存的数据
   Val_H = FLASH_ReadByte(PWM2_MIDAdd);
   Val_L = FLASH_ReadByte(PWM2_MIDAdd + 1);
   PWM_CurrentData.PWM_Mid[1] = (uint16_t)(Val_H << 8) + Val_L;
+  
+  //读取PWM1_Max Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM2_MAXAdd);
+  Val_L = FLASH_ReadByte(PWM2_MAXAdd + 1);
+  PWM_CurrentData.PWM_Max[1] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Min Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM3_MINAdd);
+  Val_L = FLASH_ReadByte(PWM3_MINAdd + 1);
+  PWM_CurrentData.PWM_Min[2] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Mid Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM3_MIDAdd);
+  Val_L = FLASH_ReadByte(PWM3_MIDAdd + 1);
+  PWM_CurrentData.PWM_Mid[2] = (uint16_t)(Val_H << 8) + Val_L;
+  
+  //读取PWM1_Max Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM3_MAXAdd);
+  Val_L = FLASH_ReadByte(PWM3_MAXAdd + 1);
+  PWM_CurrentData.PWM_Max[2] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Min Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM4_MINAdd);
+  Val_L = FLASH_ReadByte(PWM4_MINAdd + 1);
+  PWM_CurrentData.PWM_Min[3] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Mid Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM4_MIDAdd);
+  Val_L = FLASH_ReadByte(PWM4_MIDAdd + 1);
+  PWM_CurrentData.PWM_Mid[3] = (uint16_t)(Val_H << 8) + Val_L;
+  
+  //读取PWM1_Max Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM4_MAXAdd);
+  Val_L = FLASH_ReadByte(PWM4_MAXAdd + 1);
+  PWM_CurrentData.PWM_Max[3] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Min Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM5_MINAdd);
+  Val_L = FLASH_ReadByte(PWM5_MINAdd + 1);
+  PWM_CurrentData.PWM_Min[4] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Mid Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM5_MIDAdd);
+  Val_L = FLASH_ReadByte(PWM5_MIDAdd + 1);
+  PWM_CurrentData.PWM_Mid[4] = (uint16_t)(Val_H << 8) + Val_L;
+  
+  //读取PWM1_Max Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM5_MAXAdd);
+  Val_L = FLASH_ReadByte(PWM5_MAXAdd + 1);
+  PWM_CurrentData.PWM_Max[4] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Min Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM6_MINAdd);
+  Val_L = FLASH_ReadByte(PWM6_MINAdd + 1);
+  PWM_CurrentData.PWM_Min[5] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Mid Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM6_MIDAdd);
+  Val_L = FLASH_ReadByte(PWM6_MIDAdd + 1);
+  PWM_CurrentData.PWM_Mid[5] = (uint16_t)(Val_H << 8) + Val_L;
+  
+  //读取PWM1_Max Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM6_MAXAdd);
+  Val_L = FLASH_ReadByte(PWM6_MAXAdd + 1);
+  PWM_CurrentData.PWM_Max[5] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Min Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM7_MINAdd);
+  Val_L = FLASH_ReadByte(PWM7_MINAdd + 1);
+  PWM_CurrentData.PWM_Min[6] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Mid Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM7_MIDAdd);
+  Val_L = FLASH_ReadByte(PWM7_MIDAdd + 1);
+  PWM_CurrentData.PWM_Mid[6] = (uint16_t)(Val_H << 8) + Val_L;
+  
+  //读取PWM1_Max Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM7_MAXAdd);
+  Val_L = FLASH_ReadByte(PWM7_MAXAdd + 1);
+  PWM_CurrentData.PWM_Max[6] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Min Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM8_MINAdd);
+  Val_L = FLASH_ReadByte(PWM8_MINAdd + 1);
+  PWM_CurrentData.PWM_Min[7] = (uint16_t)(Val_H << 8) + Val_L;
+
+  //读取PWM1_Mid Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM8_MIDAdd);
+  Val_L = FLASH_ReadByte(PWM8_MIDAdd + 1);
+  PWM_CurrentData.PWM_Mid[7] = (uint16_t)(Val_H << 8) + Val_L;
+  
+  //读取PWM1_Max Flash中保存的数据
+  Val_H = FLASH_ReadByte(PWM8_MAXAdd);
+  Val_L = FLASH_ReadByte(PWM8_MAXAdd + 1);
+  PWM_CurrentData.PWM_Max[7] = (uint16_t)(Val_H << 8) + Val_L;
 }
 
 /**
   * @brief  PWM值写入Flash
-  * @param  None
+  * @param  Address:写入地址
+  * @param  Data：写入数据
   * @retval None
   */
-static void Write_Flash_PWM1Max(uint16_t Data)
+static void Write_Flash_PWM(uint16_t Address,uint16_t Data)
 {
   //写最大值
-  FLASH_ProgramByte(PWM1_MAXAdd,BYTE_1(Data));
+  FLASH_ProgramByte(Address,BYTE_1(Data));
   while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-  FLASH_ProgramByte(PWM1_MAXAdd + 1,BYTE_0(Data));
-  while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-}
-
-/**
-  * @brief  PWM值写入Flash
-  * @param  None
-  * @retval None
-  */
-static void Write_Flash_PWM1Mid(uint16_t Data)
-{
-  //写中值
-  FLASH_ProgramByte(PWM1_MIDAdd,BYTE_1(Data));
-  while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-  FLASH_ProgramByte(PWM1_MIDAdd + 1,BYTE_0(Data));
+  FLASH_ProgramByte(Address + 1,BYTE_0(Data));
   while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
 }
 
-/**
-  * @brief  PWM值写入Flash
-  * @param  None
-  * @retval None
-  */
-static void Write_Flash_PWM1Min(uint16_t Data)
-{
-  //写最小值
-  FLASH_ProgramByte(PWM1_MINAdd,BYTE_1(Data));
-  while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-  FLASH_ProgramByte(PWM1_MINAdd + 1,BYTE_0(Data));
-  while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-  //写中值
-}
-
-/**
-  * @brief  写入灯组PWM中值
-  * @param  None
-  * @retval None
-  */
-static void Write_Flash_PWM2Mid(uint16_t Data)
-{
-  //写最小值
-  FLASH_ProgramByte(PWM2_MIDAdd,BYTE_1(Data));
-  while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-  FLASH_ProgramByte(PWM2_MIDAdd + 1,BYTE_0(Data));
-  while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-  //写中值
-}
-
-
-/**
-  * @brief  PWM捕获初始化
-  * @param  None
-  * @retval None
-  */
-int16_t ABS(int16_t Data)
-{
-  if(Data < 0) Data = -Data;
-  return Data;
-}
-
-
-
-
-
+#if 0
 /**
   * @brief  PWM均值采集
   * @param  PWM_Current:当前采集的PWM值
@@ -186,50 +226,48 @@ int16_t ABS(int16_t Data)
 static void PWM_AVG_Calculate(uint16_t *PWM_AVG,uint16_t *PWM_Current)
 {
   static uint8_t CentreCaptureStatus = 0;//0-4:采集 5:计算平均值 6:ready
-  static uint16_t PWM_CentreTemp,Last_PWM_Current;
+  static uint16_t PWM_Temp,Last_PWM_Current;
   //摇杆需连续保持不动1S
-  if(ABS(Last_PWM_Current - *PWM_Current) < (DeadZone/2))
+  if(abs(Last_PWM_Current - *PWM_Current) < (DeadZone/2))
   {
     CentreCaptureStatus ++;
   }
   else
   {
     CentreCaptureStatus = 0;
-    PWM_CentreTemp = 0;
+    PWM_Temp = 0;
   }
   //摇杆不动2S开始采集
   if(CentreCaptureStatus > 40)
   {
-    PWM_CentreTemp += *PWM_Current;
+    PWM_Temp += *PWM_Current;
   }
   //采集10次
   if(CentreCaptureStatus == 50)
   {
-    *PWM_AVG = PWM_CentreTemp/10;
+    *PWM_AVG = PWM_Temp/10;
     CentreCaptureStatus = 0;
-    PWM_CentreTemp = 0;
+    PWM_Temp = 0;
     Last_PWM_Current = 0;
     //检查最大值 如不合法,重新采集
-    if(PWM_CurrentData.PWM_Ready == 0)
+    if(PWM_CurrentData.PWM_Ready % 3 == 0)
     {
       //不够大 或者超过2000
       if((*PWM_AVG < PWM_CentreRef + SwitchThreshold)||(*PWM_AVG > PWM_MaxRef))
       {
-        PWM_CurrentData.PWM_Ready = 0;
         return;
       }
       //合法,保存到Flash
       else
       {
-        Write_Flash_PWM1Max(*PWM_AVG);
+        Write_Flash_PWM(*PWM_AVG);
       }
     }
     //检查中值 如不合法,重新采集
-    else if(PWM_CurrentData.PWM_Ready == 1)
+    else if(PWM_CurrentData.PWM_Ready % 3 == 1)
     {
       if(ABS(*PWM_AVG - PWM_CentreRef) > 20)
       {
-        PWM_CurrentData.PWM_Ready = 1;
         return;
       }
       //合法,保存到Flash
@@ -243,12 +281,11 @@ static void PWM_AVG_Calculate(uint16_t *PWM_AVG,uint16_t *PWM_Current)
       }
     }
     //检查最小值 如不合法,重新采集
-    else if(PWM_CurrentData.PWM_Ready == 2)
+    else if(PWM_CurrentData.PWM_Ready % 3 == 2)
     {
       //不够小 或者小于2000
       if((*PWM_AVG > PWM_CentreRef - SwitchThreshold)||(*PWM_AVG < PWM_MinRef))
       {
-        PWM_CurrentData.PWM_Ready = 2;
         return;
       }
       //合法,保存到Flash
@@ -261,6 +298,7 @@ static void PWM_AVG_Calculate(uint16_t *PWM_AVG,uint16_t *PWM_Current)
   }
   Last_PWM_Current = *PWM_Current;
 }
+
 
 /**
   * @brief  上电PWM最小值 中值 最大值校准
@@ -288,7 +326,7 @@ static void PWM_Calibration(uint16_t *PWM_Current)
     PWM_CurrentData.PWM_Ready = 0;//校准最大值
   }
   /* 需要校准 */
-  if(PWM_CurrentData.PWM_Ready != 3)
+  if(PWM_CurrentData.PWM_Ready != 24)
   {
     return;
   }
@@ -571,6 +609,7 @@ void PWM_Process(void)
       break;
   }
 }
+#endif
 
 
 /**
@@ -652,12 +691,9 @@ void PPM_Decode(void)
   if(PPM_IntervalTime_Temp < 2100)
   {
     //滤波
-    if((PPM_CH == Diverter_Channel) || (PPM_CH == Throttle_Channel))
+    if(abs(PWM_CurrentData.PWM_Data[PPM_CH] - PPM_IntervalTime_Temp) > 300)
     {
-      if(ABS(PWM_CurrentData.PWM_Data[PPM_CH] - PPM_IntervalTime_Temp) > 300)
-      {
-         PPM_IntervalTime_Temp = PWM_CurrentData.PWM_Data[PPM_CH];
-      }
+       PPM_IntervalTime_Temp = PWM_CurrentData.PWM_Data[PPM_CH];
     }
     PWM_CurrentData.PWM_Data[PPM_CH] = PPM_IntervalTime_Temp;
     PPM_CH ++;
@@ -666,12 +702,12 @@ void PPM_Decode(void)
     {
       //TIM3_SetCounter(0);
       //GPIO_ToggleBits(GPIOA,GPIO_Pin_3);
-      PWM_Process();
+      PWM_CurrentData.PWM_Status[0] = 1;
+      //PWM_Process();
     }
   }
   else
   {
-    
     PPM_CH = 0;
   }
   Last_RisingEdge_Time = Current_RisingEdge_Time;

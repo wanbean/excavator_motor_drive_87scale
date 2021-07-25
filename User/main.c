@@ -29,12 +29,9 @@
 #include "stm8l10x.h"
 #include "Receiver_PPM.h"
 #include "Motor_Control.h"
-#include "Light_Control.h"
 #include "Servo_Control.h"
+#include "SoftPwm_Control.h"
 /* Private typedef -----------------------------------------------------------*/
-//定义LED接口
-#define LED_GPIO_PORT  GPIOD
-#define LED_GPIO_PINS  GPIO_Pin_0
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
@@ -70,19 +67,49 @@ void Delay(__IO uint16_t nCount)
 //  TIM4_Cmd(ENABLE);//TIM4使能
 //}
 
+//大臂灯控制引脚
+#define Boom_Lamp_PORT                  GPIOA
+#define Boom_Lamp_PIN                   GPIO_Pin_2
+//机身灯控制引脚
+#define Shell_Lamp_PORT                GPIOA
+#define Shell_Lamp_PIN                 GPIO_Pin_6
+
+/**
+  * @brief  灯光引脚初始化
+  * @param  None
+  * @retval None
+  */
+void LightGPIO_Init(void)
+{
+  //大臂灯
+  GPIO_Init(Boom_Lamp_PORT, Boom_Lamp_PIN, GPIO_Mode_Out_PP_High_Fast);
+  //机身灯
+  GPIO_Init(Shell_Lamp_PORT, Shell_Lamp_PIN, GPIO_Mode_Out_PP_High_Fast);
+
+  //置低电平
+  GPIO_ResetBits(Boom_Lamp_PORT,Boom_Lamp_PIN);
+  GPIO_ResetBits(Shell_Lamp_PORT,Shell_Lamp_PIN);
+}
+
 void main(void)
 {
-//  uint8_t i = 0;
   CLK_MasterPrescalerConfig(CLK_MasterPrescaler_HSIDiv1);
   //USART_QuickInit();
   PPM_Reveiver_Init();
   LightGPIO_Init();
-  Servo_Init();
+  SoftPwmInit();
+  Motor_Init(60000);
   GPIO_Init(GPIOA,GPIO_Pin_3,GPIO_Mode_Out_PP_High_Fast);
   enableInterrupts();//开启中断总开关
   while(1)
   {
-
+    if(PWM_CurrentData.PWM_Status[0] == 1)
+    {
+      PWM_CurrentData.PWM_Status[0] = 0;
+      //油门赋值...
+      Motor_Process(TIM2_GetCounter());
+    }
+#if 0
     if(PWM_CurrentData.Fail_Safe == 20)
     {
       //关闭PWM,灯光闪烁
@@ -132,7 +159,9 @@ void main(void)
 //    Delay(0xFFFF);
       //Motor1_PWM(1,250);
     //Turning_Signal_Lamp_Control(Turning_Signal_Turn_Right);
+    #endif
   }
+
 }
 
 
