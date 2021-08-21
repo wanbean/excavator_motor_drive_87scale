@@ -91,64 +91,92 @@ void LightGPIO_Init(void)
   GPIO_ResetBits(Shell_Lamp_PORT,Shell_Lamp_PIN);
 }
 
+uint16_t i = 0;
 void main(void)
 {
   CLK_MasterPrescalerConfig(CLK_MasterPrescaler_HSIDiv1);
   //USART_QuickInit();
   PPM_Reveiver_Init();
   LightGPIO_Init();
-  SoftPwmInit();
-  Motor_Init(60000);
-  GPIO_Init(GPIOA,GPIO_Pin_3,GPIO_Mode_Out_PP_High_Fast);
+  Motor_Init();
+//  GPIO_Init(GPIOA,GPIO_Pin_3,GPIO_Mode_Out_PP_High_Fast);
   enableInterrupts();//开启中断总开关
+//    Motor1DirF();
+//    Motor2DirF();
+//    Motor3DirF();
+//    Motor4DirF();
+//    Motor5DirF();
+//    Motor6DirF();
+//    Motor1OutH();
+//    Motor2OutH();
+//    Motor3OutH();   
+//    Motor4OutH();
+//    Motor5OutH();
+//    Motor6OutH();
+  
+//  MotorDirForwardFunc[0]();
+//  PWM_DeviceTurnOffFunc[0]();
+//  MotorDirForwardFunc[1]();
+//  PWM_DeviceTurnOffFunc[1]();
+//  MotorDirForwardFunc[2]();
+//  PWM_DeviceTurnOffFunc[2]();
+  
+//    MotorDirForwardFunc[0] = Motor1DirF;
+    MotorDirForwardFunc[0]();
+//    PWM_DeviceTurnOnFunc[0]();
+    MotorDirBackwardsFunc[1]();
+    //SoftPwmDevice[1].pin_output_h();
+//    MotorDirForwardFunc[2]();
+//    SoftPwmDevice[2].pin_output_h();
+//    MotorDirForwardFunc[3]();
+//    SoftPwmDevice[3].pin_output_h();
+//    MotorDirForwardFunc[4]();
+//    SoftPwmDevice[4].pin_output_h();
+//    MotorDirForwardFunc[5]();
+//    SoftPwmDevice[5].pin_output_h();
+    
+//    SoftPwmDevice[Bucket_Motor].pwm = 10;
+//  SoftPwmDevice[Arm_Motor].pwm = 20;
+    
+    uint32_t sigLostCnt = 0;
   while(1)
   {
-    if(PWM_CurrentData.PWM_Status[0] == 1)
-    {
-      PWM_CurrentData.PWM_Status[0] = 0;
-      //油门赋值...
-      Motor_Process(TIM2_GetCounter());
-    }
-#if 0
-    if(PWM_CurrentData.Fail_Safe == 20)
-    {
-      //关闭PWM,灯光闪烁
-      Motor1_PWM(0,0);
-      Lamp_Blink_Single(Turning_Signal_Lamp_L_PORT,Turning_Signal_Lamp_L_PIN);
-      Lamp_Blink_Single(Turning_Signal_Lamp_R_PORT,Turning_Signal_Lamp_R_PIN);
-    }
-    else
-    {
-      //校准最大值
-      if(PWM_CurrentData.PWM_Ready == 0)
+      //debug222 = TIM2_GetCounter();
+      
+      i+=3;
+      if(i >= 60001) i = 0;
+      
+      if(PWM_CurrentData.Fail_Safe == 0) PWM_CurrentData.Fail_Safe = 1;
+      
+      
+      if(PWM_CurrentData.Fail_Safe == 1)
       {
-        Lamp_Blink_Single(Head_Lamp_PORT,Head_Lamp_PIN);
+        if(sigLostCnt++ >= 7500)
+        {
+          sigLostCnt = 0;
+          PWM_CurrentData.Fail_Safe = 2;
+        }
       }
-      //校准中值
-      else if(PWM_CurrentData.PWM_Ready == 1)
+      else
       {
-        Lamp_Blink_Single(Stop_Lamp_PORT,Stop_Lamp_PIN);
+        sigLostCnt = 0;
       }
-      //校准最小值
-      else if(PWM_CurrentData.PWM_Ready == 2)
-      {
-        Lamp_Blink_Single(BackUp_Lamp_PORT,BackUp_Lamp_PIN); 
-      }
-      //油门不在中位
-      else if((PWM_CurrentData.PWM_Ready == 3)&&(ABS(PWM_CurrentData.PWM_Data[Throttle_Channel] -  PWM_CurrentData.PWM_Mid[0]) > DeadZone))
-      {
-        Lamp_Blink_All();
-      }
-      else if(PWM_CurrentData.PWM_Ready == 4)
-      {
-        BackUp_Lamp_Control(Lamp_Mode.BackUp_Lame_Mode);
-        Turning_Signal_Lamp_Control(Lamp_Mode.Turning_Signal_Lamp_Mode);
-        Stop_Lamp_Control(&Lamp_Mode.Stop_Lamp_Mode);
-        Head_Lamp_Control(Lamp_Mode.Head_Lamp_Mode);
-        Plice_Lamp_Control(&Lamp_Mode.Police_Lamp_Mode);
-        Motor1_PWM(Control_Data.Throttle_Dir,Control_Data.Throttle_Magnitude);      
-      }
-    }
+    
+//    if(PWM_CurrentData.PWM_Status[0] == 1)
+//    {
+////      PWM_CurrentData.PWM_Status[0] = 0;
+//      //油门赋值...
+//      PWM_CurrentData.PWM_Data[0] = 1700;
+//      PWM_CurrentData.PWM_Data[1] = 1500;
+//      PWM_CurrentData.PWM_Data[2] = 1800;
+//      PWM_CurrentData.PWM_Data[3] = 1900;
+//      PWM_CurrentData.PWM_Data[4] = 1960;
+//      PWM_CurrentData.PWM_Data[5] = 1040;
+     //Motor_Process(TIM2_GetCounter()%100);
+      Motor_Process(i);
+
+//  soft_pwm(i);
+//    }
     
 //    GPIO_ToggleBits(LED_GPIO_PORT,LED_GPIO_PINS);
 //    Delay(0xFFFF);
@@ -159,7 +187,6 @@ void main(void)
 //    Delay(0xFFFF);
       //Motor1_PWM(1,250);
     //Turning_Signal_Lamp_Control(Turning_Signal_Turn_Right);
-    #endif
   }
 
 }

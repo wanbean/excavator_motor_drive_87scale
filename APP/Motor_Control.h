@@ -9,7 +9,7 @@
 #define _MOTOR_CONTROL_H
 /* ---------------------------------------Include--------------------------------------------------- */
 #include "stm8l10x.h"
-#include "Receiver_PPM.h"
+
 /* ---------------------------------------Private typedef ------------------------------------------ */
 
 /* ---------------------------------------Private define ------------------------------------------- */
@@ -17,9 +17,9 @@
 #define MOTOR_BackUp_Scale 3/4
 //一号电机控制引脚
 #define MOTOR1_DIR_PORT GPIOC
-#define MOTOR1_DIR_PIN  GPIO_Pin_3
+#define MOTOR1_DIR_PIN  GPIO_Pin_3      //in1
 #define MOTOR1_PWM_PORT GPIOC
-#define MOTOR1_PWM_PIN  GPIO_Pin_4
+#define MOTOR1_PWM_PIN  GPIO_Pin_4      //in2
 //二号电机控制引脚
 #define MOTOR2_DIR_PORT GPIOC
 #define MOTOR2_DIR_PIN  GPIO_Pin_1
@@ -45,9 +45,17 @@
 #define MOTOR6_DIR_PIN  GPIO_Pin_1
 #define MOTOR6_PWM_PORT GPIOB
 #define MOTOR6_PWM_PIN  GPIO_Pin_2
+//大臂限位检测引脚
+//最高位
+#define BOOM_CHECK_H_PORT GPIOD
+#define BOOM_CHECK_H_PIN  GPIO_Pin_0
+//最低位
+#define BOOM_CHECK_L_PORT GPIOB
+#define BOOM_CHECK_L_PIN  GPIO_Pin_0
 
 /* ---------------------------------------Private variables ---------------------------------------- */
-
+extern void (*MotorDirForwardFunc[6])(void);
+extern void (*MotorDirBackwardsFunc[6])(void);
 /* ---------------------------------------Private function prototypes  ----------------------------- */
 void Motor1OutH(void);
 void Motor2OutH(void);
@@ -61,7 +69,21 @@ void Motor3OutL(void);
 void Motor4OutL(void);
 void Motor5OutL(void);
 void Motor6OutL(void);
-void Motor_Init(uint16_t Period);
+
+void Motor1DirF(void);
+void Motor2DirF(void);
+void Motor3DirF(void);
+void Motor4DirF(void);
+void Motor5DirF(void);
+void Motor6DirF(void);
+void Motor1DirB(void);
+void Motor2DirB(void);
+void Motor3DirB(void);
+void Motor4DirB(void);
+void Motor5DirB(void);
+void Motor6DirB(void);
+
+void Motor_Init(void);
 void Motor_Process(uint16_t sys_cnt);
 
 

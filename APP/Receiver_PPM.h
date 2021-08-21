@@ -14,23 +14,24 @@
 #include "stm8l10x_usart.h"
 #include "stm8l10x_tim2.h"
 /* ---------------------------------------Private typedef ------------------------------------------ */
+//#pragma pack(1)//设定为4字节对齐
 typedef struct
 {
-//  uint8_t PWM_Ready;
-  uint8_t Fail_Safe;
   uint16_t PWM_Max[8];
   uint16_t PWM_Mid[8];
   uint16_t PWM_Min[8];
   uint16_t PWM_Data[8];
   uint8_t PWM_Status[8];
+  uint8_t Fail_Safe;
 } PWM_CURRENTDATA;
 
 typedef struct
 {
-  int8_t Throttle_Dir;
-  int16_t Throttle_Magnitude;
-  int8_t Light_Status;
+  uint8_t        Dir[6];
+  uint16_t       Magnitude[6];
+  uint8_t        Light_Status;
 } CONTROL_DATA;
+//#pragma pack() //保存对齐状态
 /* ---------------------------------------Private define ------------------------------------------- */
 //PPM信号输入引脚
 #define PPM_Input_PORT GPIOA
@@ -87,10 +88,10 @@ typedef struct
 /* ---------------------------------------Private variables ---------------------------------------- */
 extern PWM_CURRENTDATA PWM_CurrentData;
 extern CONTROL_DATA Control_Data;
-extern volatile uint8_t PPMCapture_Pried;
 /* ---------------------------------------Private function prototypes  ----------------------------- */
 void PPM_Reveiver_Init(void);
 void PWM_Process(void);
+void Throttle_Analysis(PWM_CURRENTDATA *currentdata,CONTROL_DATA *controldata);
 void PPM_Decode(void);
 
 #endif

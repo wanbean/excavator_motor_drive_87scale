@@ -265,10 +265,10 @@ INTERRUPT_HANDLER(TIM3_UPD_OVF_TRG_BRK_IRQHandler, 21)
     /* In order to detect unexpected events during development,
        it is recommended to set a breakpoint on the following instruction.
     */
-  if(TIM3_GetITStatus(TIM3_IT_Update) != RESET)
-  {
-    //GPIO_ToggleBits(GPIOA,GPIO_Pin_3);
-  }
+//  if(TIM3_GetITStatus(TIM3_IT_Update) != RESET)
+//  {
+//    GPIO_ToggleBits(GPIOA,GPIO_Pin_3);
+//  }
   TIM3_ClearITPendingBit(TIM3_IT_Update);
 }
 /**

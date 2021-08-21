@@ -16,7 +16,7 @@
         <ShowSource>1</ShowSource>
     </Trace1>
     <DebugChecksum>
-        <Checksum>194782725</Checksum>
+        <Checksum>692721275</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>_ 0</Enabled>
@@ -77,8 +77,12 @@
     <struct_types>
         <Fmt0>PWM_CURRENTDATA-Fail_Safe	3	0</Fmt0>
     </struct_types>
+    <array_types>
+        <Fmt0>uint8_t[6]	3	0</Fmt0>
+    </array_types>
     <watch_formats>
         <Fmt0>{W}1:PPMCapture_Pried	3	1</Fmt0>
+        <Fmt1>{W}42:debug444	0	9</Fmt1>
     </watch_formats>
     <DataSample>
         <LogEnabled>0</LogEnabled>

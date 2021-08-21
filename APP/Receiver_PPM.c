@@ -1,12 +1,13 @@
 /*****************************************************************************************************
-* @file    Receiver_PPM.c									                                                           * 
-* @author  WanBean										                                                               *
-* @version V1.0                                                         			                       *
-* @date    2020-03-27    									                                                           *
-* @brief                                               					                                     *
+* @file    Receiver_PPM.c									     * 
+* @author  WanBean                                                                                   *
+* @version V1.0                                                         			     *
+* @date    2020-03-27                                                                                *
+* @brief                                               					             *
 ******************************************************************************************************/
 /* ---------------------------------------Include--------------------------------------------------- */
 #include "Receiver_PPM.h"
+#include "SoftPwm_Control.h"
 #include <stdlib.h>
 
 /* ---------------------------------------Private typedef ------------------------------------------ */
@@ -22,9 +23,9 @@ PWM_CURRENTDATA PWM_CurrentData = {.Fail_Safe = 0,
                                    .PWM_Mid = {PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef},
                                    .PWM_Min = {PWM_MinRef,PWM_MinRef,PWM_MinRef,PWM_MinRef,PWM_MinRef,PWM_MinRef,PWM_MinRef,PWM_MinRef},
                                    .PWM_Data = {PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef,PWM_CentreRef},
-                                   .PWM_Status = {3,3,3,3,3,3,3,3}};
-CONTROL_DATA Control_Data;
-volatile uint8_t PPMCapture_Pried = 0; 
+                                   .PWM_Status = {8,7,6,5,4,3,2,1},};
+CONTROL_DATA Control_Data = {.Magnitude = {0,0,0,0,0,0},
+                            };
 
 /**
   * @brief  PPM捕获初始化
@@ -33,30 +34,22 @@ volatile uint8_t PPMCapture_Pried = 0;
   */
 void PPM_Reveiver_Init(void)
 {
-  /* 定时器捕获方式 */
-//  //使能TIM2外设时钟门控
-//  CLK_PeripheralClockConfig(CLK_Peripheral_TIM2, ENABLE);
-//    
-//  //配置TIM2 通道1--PB0的GPIO口 上拉输入不带中断
-//  GPIO_Init(GPIOB, GPIO_Pin_2, GPIO_Mode_In_PU_No_IT);
-//  
-////  TIM2_TimeBaseInit(TIM2_Prescaler_16, TIM2_CounterMode_Up,59999);
-//  TIM2_PrescalerConfig(TIM2_Prescaler_16,TIM2_PSCReloadMode_Immediate);//TIM2_PSCReloadMode_Update
-//  //自动预装值
-//  TIM2_SetAutoreload(65535);
-//  //自动预装载使能
-//  TIM2_ARRPreloadConfig(ENABLE);
-//
-//  /* Capture only every 8 events!!! */
-//  //配置TIM2输入捕获通道1，下降沿触发，连接到定时器输入通道1  每8次事件触发一次捕获，无滤波器
-//  TIM2_ICInit(TIM2_Channel_2, TIM2_ICPolarity_Rising, TIM2_ICSelection_DirectTI, TIM2_ICPSC_Div1, 0);
-//  
-//  //使能TIM2计数
-//  TIM2_Cmd(ENABLE);
-//  
-//  TIM2_ITConfig(TIM2_IT_CC2,ENABLE);
-//  //清捕获标志
-//  TIM2_ClearFlag(TIM2_FLAG_CC2);
+  //使能TIM3外设时钟门控
+  CLK_PeripheralClockConfig(CLK_Peripheral_TIM3, ENABLE);
+  TIM3_DeInit();
+  //TIM3时基设置，1分频，向上计数，
+  TIM3_TimeBaseInit(TIM3_Prescaler_8, TIM3_CounterMode_Up,40000);
+  
+  //自动预装载使能
+  TIM3_ARRPreloadConfig(ENABLE);
+
+  //使能TIM2输出
+  TIM3_ITConfig(TIM3_IT_Update,ENABLE);
+  //TIM3计数器使能
+  TIM3_Cmd(ENABLE);
+  
+  //清捕获标志
+  TIM3_ClearFlag(TIM3_FLAG_Update);
   
   /* 引脚外部中断方式 */
   GPIO_Init(PPM_Input_PORT,PPM_Input_PIN,GPIO_Mode_In_PU_IT);
@@ -670,6 +663,64 @@ void PWM_Process(void)
 //    }
 //  }
 //}
+  
+/**
+  * @brief  电调通道解析
+  * @param  Throttle_Data:接收机油门PWM值
+  * @retval None
+  */
+void Throttle_Analysis(PWM_CURRENTDATA *currentdata,CONTROL_DATA *controldata)
+{
+  static float pwm_float = 0;
+  for(uint8_t i = 0;i < 6;i ++)
+  {
+    if(currentdata->PWM_Data[i] > currentdata->PWM_Mid[i])
+    {
+      if(currentdata->PWM_Data[i] - currentdata->PWM_Mid[i] > DeadZone)
+      {
+        controldata->Dir[i] = 1;
+        MotorDirForwardFunc[i]();
+        pwm_float =  (float)((float)(currentdata->PWM_Data[i] - currentdata->PWM_Mid[i]) / (float)(currentdata->PWM_Max[i] - currentdata->PWM_Mid[i]));
+        controldata->Magnitude[i] = (uint16_t)(pwm_float * 100);
+      }
+      else
+      {
+        controldata->Dir[i] = 1;
+        controldata->Magnitude[i] = 0;
+      }
+    }
+    else if(currentdata->PWM_Mid[i] >= currentdata->PWM_Data[i])
+    {
+      if(currentdata->PWM_Mid[i] - currentdata->PWM_Data[i] > DeadZone)
+      {
+        controldata->Dir[i] = 0;
+        MotorDirBackwardsFunc[i]();
+        pwm_float =  (float)((float)(currentdata->PWM_Mid[i] - currentdata->PWM_Data[i]) / (float)(currentdata->PWM_Mid[i] - currentdata->PWM_Min[i]));
+        controldata->Magnitude[i] = (uint16_t)(pwm_float * 100);
+      }
+      else
+      {
+        controldata->Dir[i] = 1;
+        controldata->Magnitude[i] = 0;
+      }
+    }
+  }
+  if(GPIO_ReadInputDataBit(BOOM_CHECK_H_PORT,BOOM_CHECK_H_PIN) == 0)
+  {
+    if(controldata->Dir[Boom_Channel] == 1)
+    {
+      controldata->Magnitude[Boom_Channel] = 0;
+    }
+  }
+  if(GPIO_ReadInputDataBit(BOOM_CHECK_L_PORT,BOOM_CHECK_L_PIN) == 0)
+  {
+    if(controldata->Dir[Boom_Channel] == 0)
+    {
+      controldata->Magnitude[Boom_Channel] = 0;
+    }
+  }
+  
+}
 
 void PPM_Decode(void)
 {
@@ -700,9 +751,17 @@ void PPM_Decode(void)
     //一帧数据结束,产生20ms周期定时
     if(PPM_CH == 8)
     {
+      PWM_CurrentData.Fail_Safe = 0;
       //TIM3_SetCounter(0);
       //GPIO_ToggleBits(GPIOA,GPIO_Pin_3);
-      PWM_CurrentData.PWM_Status[0] = 1;
+//      PWM_CurrentData.PWM_Max[0] = 1;
+//      PWM_CurrentData.PWM_Status[1] = 17;
+//      PWM_CurrentData.PWM_Status[2] = 16;
+//      PWM_CurrentData.PWM_Status[3] = 15;
+//      PWM_CurrentData.PWM_Status[4] = 14;
+//      PWM_CurrentData.PWM_Status[5] = 13;
+//      PWM_CurrentData.PWM_Status[6] = 12;
+//      PWM_CurrentData.PWM_Status[7] = 11;
       //PWM_Process();
     }
   }
