@@ -101,42 +101,6 @@ void main(void)
   Motor_Init();
 //  GPIO_Init(GPIOA,GPIO_Pin_3,GPIO_Mode_Out_PP_High_Fast);
   enableInterrupts();//开启中断总开关
-//    Motor1DirF();
-//    Motor2DirF();
-//    Motor3DirF();
-//    Motor4DirF();
-//    Motor5DirF();
-//    Motor6DirF();
-//    Motor1OutH();
-//    Motor2OutH();
-//    Motor3OutH();   
-//    Motor4OutH();
-//    Motor5OutH();
-//    Motor6OutH();
-  
-//  MotorDirForwardFunc[0]();
-//  PWM_DeviceTurnOffFunc[0]();
-//  MotorDirForwardFunc[1]();
-//  PWM_DeviceTurnOffFunc[1]();
-//  MotorDirForwardFunc[2]();
-//  PWM_DeviceTurnOffFunc[2]();
-  
-//    MotorDirForwardFunc[0] = Motor1DirF;
-    MotorDirForwardFunc[0]();
-//    PWM_DeviceTurnOnFunc[0]();
-    MotorDirBackwardsFunc[1]();
-    //SoftPwmDevice[1].pin_output_h();
-//    MotorDirForwardFunc[2]();
-//    SoftPwmDevice[2].pin_output_h();
-//    MotorDirForwardFunc[3]();
-//    SoftPwmDevice[3].pin_output_h();
-//    MotorDirForwardFunc[4]();
-//    SoftPwmDevice[4].pin_output_h();
-//    MotorDirForwardFunc[5]();
-//    SoftPwmDevice[5].pin_output_h();
-    
-//    SoftPwmDevice[Bucket_Motor].pwm = 10;
-//  SoftPwmDevice[Arm_Motor].pwm = 20;
     
     uint32_t sigLostCnt = 0;
   while(1)
@@ -161,34 +125,8 @@ void main(void)
       {
         sigLostCnt = 0;
       }
-    
-//    if(PWM_CurrentData.PWM_Status[0] == 1)
-//    {
-////      PWM_CurrentData.PWM_Status[0] = 0;
-//      //油门赋值...
-//      PWM_CurrentData.PWM_Data[0] = 1700;
-//      PWM_CurrentData.PWM_Data[1] = 1500;
-//      PWM_CurrentData.PWM_Data[2] = 1800;
-//      PWM_CurrentData.PWM_Data[3] = 1900;
-//      PWM_CurrentData.PWM_Data[4] = 1960;
-//      PWM_CurrentData.PWM_Data[5] = 1040;
-     //Motor_Process(TIM2_GetCounter()%100);
       Motor_Process(i);
-
-//  soft_pwm(i);
-//    }
-    
-//    GPIO_ToggleBits(LED_GPIO_PORT,LED_GPIO_PINS);
-//    Delay(0xFFFF);
-//    Delay(0xFFFF);
-//    Delay(0xFFFF);
-//    Delay(0xFFFF);
-//    Delay(0xFFFF);
-//    Delay(0xFFFF);
-      //Motor1_PWM(1,250);
-    //Turning_Signal_Lamp_Control(Turning_Signal_Turn_Right);
   }
-
 }
 
 
