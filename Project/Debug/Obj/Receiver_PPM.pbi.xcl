@@ -1,22 +1,22 @@
-"C:\Users\WanBean\Desktop\excavator_esc\APP\Receiver_PPM.c"
+"C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\APP\Receiver_PPM.c"
 -std=c99
 -ferror-limit=0
 -I
-C:\Users\WanBean\Desktop\excavator_esc\Project\..\APP
+C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\..\APP
 -I
-C:\Users\WanBean\Desktop\excavator_esc\Project\..\Libraries\inc
+C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\..\Libraries\inc
 -I
-C:\Users\WanBean\Desktop\excavator_esc\Project\..\User
+C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\..\User
 -I
 D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\inc
 -I
 D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\inc\c
 -I
-C:\Users\WanBean\Desktop\excavator_esc\APP
+C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\APP
 -I
-C:\Users\WanBean\Desktop\excavator_esc\Libraries\inc
+C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Libraries\inc
 -I
-C:\Users\WanBean\Desktop\excavator_esc\User
+C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\User
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

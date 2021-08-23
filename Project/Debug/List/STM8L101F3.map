@@ -1,43 +1,43 @@
 ###############################################################################
 #
-# IAR ELF Linker V3.10.1.201 for STM8                     21/Aug/2021  22:52:12
+# IAR ELF Linker V3.10.1.201 for STM8                     23/Aug/2021  23:54:13
 # Copyright 2010-2017 IAR Systems AB.
 #
 #    Output file  =  
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Exe\STM8L101F3.out
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Exe\STM8L101F3.out
 #    Map file     =  
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\List\STM8L101F3.map
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\List\STM8L101F3.map
 #    Command line =  
-#        -f C:\Users\WanBean\AppData\Local\Temp\EWF02D.tmp
-#        (C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\main.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\Motor_Control.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\Receiver_PPM.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\Servo_Control.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\SoftPwm_Control.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_awu.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_beep.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_clk.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_comp.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_exti.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_flash.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_gpio.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_i2c.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_irtim.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_it.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_itc.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_iwdg.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_rst.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_spi.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_tim2.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_tim3.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_tim4.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_usart.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\stm8l10x_wfe.o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj\Switch_Control.o
+#        -f C:\Users\WanBean\AppData\Local\Temp\EWF9FD.tmp
+#        (C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\main.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\Motor_Control.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\Receiver_PPM.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\Servo_Control.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\SoftPwm_Control.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_awu.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_beep.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_clk.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_comp.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_exti.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_flash.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_gpio.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_i2c.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_irtim.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_it.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_itc.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_iwdg.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_rst.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_spi.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_tim2.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_tim3.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_tim4.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_usart.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\stm8l10x_wfe.o
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj\Switch_Control.o
 #        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb -o
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Exe\STM8L101F3.out
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Exe\STM8L101F3.out
 #        --map
-#        C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\List\STM8L101F3.map
+#        C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\List\STM8L101F3.map
 #        --config "D:\Program Files (x86)\IAR Systems\Embedded Workbench
 #        8.0\stm8\config\lnkstm8l101f3.icf" --config_def _CSTACK_SIZE=0x100
 #        --config_def _HEAP_SIZE=0x100 --entry __iar_program_start --debug_lib)
@@ -134,84 +134,85 @@ initialize by copy {
 "P3-P5":                                0xf1e
   .near_func.text    ro code  0x008080  0x2de  float.o [4]
   .near_func.text    ro code  0x00835e  0x128  long.o [4]
-  .near_func.text    ro code  0x008486  0x116  Receiver_PPM.o [1]
-  .near_func.text    ro code  0x00859c  0x107  SoftPwm_Control.o [1]
-  .near_func.text    ro code  0x0086a3   0xcc  vreg_util.o [4]
-  .near_func.text    ro code  0x00876f   0xa0  stm8l10x_exti.o [1]
-  .near_func.text    ro code  0x00880f   0x88  Receiver_PPM.o [1]
-  Initializer bytes  const    0x008897   0x79  <for P2-1>
-  .near_func.text    ro code  0x008910   0x72  SoftPwm_Control.o [1]
-  .near_func.text    ro code  0x008982   0x6d  main.o [1]
-  .near_func.text    ro code  0x0089ef   0x6c  Motor_Control.o [1]
-  .near_func.text    ro code  0x008a5b   0x65  stm8l10x_tim3.o [1]
-  .near_func.text    ro code  0x008ac0   0x63  long_util.o [4]
-  .near_func.text    ro code  0x008b23   0x52  stm8l10x_gpio.o [1]
-  .near_func.text    ro code  0x008b75   0x45  Receiver_PPM.o [1]
-  .near_func.text    ro code  0x008bba   0x3b  Motor_Control.o [1]
-  .near_func.text    ro code  0x008bf5   0x28  init_small.o [4]
-  .near_func.text    ro code  0x008c1d   0x26  main.o [1]
-  .iar.init_table    const    0x008c43   0x12  - Linker created -
-  .near_func.text    ro code  0x008c55   0x20  stm8l10x_it.o [1]
-  .near_func.text    ro code  0x008c75   0x1e  Motor_Control.o [1]
-  .near_func.text    ro code  0x008c93   0x1e  init_small.o [4]
-  .near_func.text    ro code  0x008cb1   0x1b  stm8l10x_tim3.o [1]
-  .near_func.text    ro code  0x008ccc   0x19  stm8l10x_exti.o [1]
-  .near_func.text    ro code  0x008ce5   0x19  stm8l10x_it.o [1]
-  .near_func.text    ro code  0x008cfe   0x18  stm8l10x_clk.o [1]
-  .near_func.text    ro code  0x008d16   0x18  stm8l10x_tim3.o [1]
-  .near_func.text    ro code  0x008d2e   0x18  dc_util.o [4]
-  .near_func.text    ro code  0x008d46   0x16  stm8l10x_exti.o [1]
-  .near_func.text    ro code  0x008d5c   0x15  stm8l10x_it.o [1]
-  .near_func.text    ro code  0x008d71   0x15  stm8l10x_it.o [1]
-  .near_func.text    ro code  0x008d86   0x14  init.o [4]
-  .near_func.text    ro code  0x008d9a   0x14  __dbg_xxexit.o [3]
-  .near_func.text    ro code  0x008dae   0x13  cstartup.o [4]
-  .near_func.text    ro code  0x008dc1   0x12  stm8l10x_tim3.o [1]
-  .near_func.text    ro code  0x008dd3   0x10  stm8l10x_clk.o [1]
-  .near_func.text    ro code  0x008de3    0xd  Receiver_PPM.o [1]
-  .near_func.text    ro code  0x008df0    0xd  stm8l10x_tim3.o [1]
-  .near_func.text    ro code  0x008dfd    0xd  stm8l10x_tim3.o [1]
-  .near_func.text    ro code  0x008e0a    0xc  stm8l10x_tim3.o [1]
-  .near_func.text    ro code  0x008e16    0xb  Motor_Control.o [1]
-  .near_func.text    ro code  0x008e21    0xb  Motor_Control.o [1]
-  .near_func.text    ro code  0x008e2c    0xb  Motor_Control.o [1]
-  .near_func.text    ro code  0x008e37    0xb  Motor_Control.o [1]
-  .near_func.text    ro code  0x008e42    0xb  stm8l10x_tim3.o [1]
-  .near_func.text    ro code  0x008e4d    0x9  SoftPwm_Control.o [1]
-  .near_func.text    ro code  0x008e56    0x9  SoftPwm_Control.o [1]
-  .near_func.text    ro code  0x008e5f    0x9  stm8l10x_tim3.o [1]
-  .near_func.text    ro code  0x008e68    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008e70    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008e78    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008e80    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008e88    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008e90    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008e98    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008ea0    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008ea8    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008eb0    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008eb8    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008ec0    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008ec8    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008ed0    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008ed8    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008ee0    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008ee8    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008ef0    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008ef8    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008f00    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008f08    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008f10    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008f18    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008f20    0x8  Motor_Control.o [1]
-  .near_func.text    ro code  0x008f28    0x8  SoftPwm_Control.o [1]
-  .near_func.text    ro code  0x008f30    0x7  stm8l10x_gpio.o [1]
-  .near_func.text    ro code  0x008f37    0x7  stm8l10x_gpio.o [1]
-  .near_func.text    ro code  0x008f3e    0x7  stm8l10x_gpio.o [1]
-  .near_func.text    ro code  0x008f45    0x7  stm8l10x_it.o [1]
-  .near_func.text    ro code  0x008f4c    0x6  Motor_Control.o [1]
-  .near_func.text    ro code  0x008f52    0x6  Motor_Control.o [1]
-  .near_func.text    ro code  0x008f58    0x6  char.o [4]
+  .near_func.text    ro code  0x008486  0x111  Receiver_PPM.o [1]
+  .near_func.text    ro code  0x008597  0x107  SoftPwm_Control.o [1]
+  .near_func.text    ro code  0x00869e   0xcc  vreg_util.o [4]
+  .near_func.text    ro code  0x00876a   0xa0  stm8l10x_exti.o [1]
+  .near_func.text    ro code  0x00880a   0x88  Receiver_PPM.o [1]
+  Initializer bytes  const    0x008892   0x79  <for P2-1>
+  .near_func.text    ro code  0x00890b   0x72  SoftPwm_Control.o [1]
+  .near_func.text    ro code  0x00897d   0x6d  main.o [1]
+  .near_func.text    ro code  0x0089ea   0x6c  Motor_Control.o [1]
+  .near_func.text    ro code  0x008a56   0x65  stm8l10x_tim3.o [1]
+  .near_func.text    ro code  0x008abb   0x63  long_util.o [4]
+  .near_func.text    ro code  0x008b1e   0x52  stm8l10x_gpio.o [1]
+  .near_func.text    ro code  0x008b70   0x45  Receiver_PPM.o [1]
+  .near_func.text    ro code  0x008bb5   0x3b  Motor_Control.o [1]
+  .near_func.text    ro code  0x008bf0   0x28  init_small.o [4]
+  .near_func.text    ro code  0x008c18   0x26  main.o [1]
+  .iar.init_table    const    0x008c3e   0x12  - Linker created -
+  .near_func.text    ro code  0x008c50   0x20  stm8l10x_it.o [1]
+  .near_func.text    ro code  0x008c70   0x1e  Motor_Control.o [1]
+  .near_func.text    ro code  0x008c8e   0x1e  init_small.o [4]
+  .near_func.text    ro code  0x008cac   0x1b  stm8l10x_tim3.o [1]
+  .near_func.text    ro code  0x008cc7   0x19  stm8l10x_exti.o [1]
+  .near_func.text    ro code  0x008ce0   0x19  stm8l10x_it.o [1]
+  .near_func.text    ro code  0x008cf9   0x18  stm8l10x_clk.o [1]
+  .near_func.text    ro code  0x008d11   0x18  stm8l10x_tim3.o [1]
+  .near_func.text    ro code  0x008d29   0x18  dc_util.o [4]
+  .near_func.text    ro code  0x008d41   0x16  stm8l10x_exti.o [1]
+  .near_func.text    ro code  0x008d57   0x15  stm8l10x_it.o [1]
+  .near_func.text    ro code  0x008d6c   0x15  stm8l10x_it.o [1]
+  .near_func.text    ro code  0x008d81   0x14  init.o [4]
+  .near_func.text    ro code  0x008d95   0x14  __dbg_xxexit.o [3]
+  .near_func.text    ro code  0x008da9   0x13  cstartup.o [4]
+  .near_func.text    ro code  0x008dbc   0x12  stm8l10x_tim3.o [1]
+  .near_func.text    ro code  0x008dce   0x10  stm8l10x_clk.o [1]
+  .near_func.text    ro code  0x008dde    0xd  Receiver_PPM.o [1]
+  .near_func.text    ro code  0x008deb    0xd  stm8l10x_tim3.o [1]
+  .near_func.text    ro code  0x008df8    0xd  stm8l10x_tim3.o [1]
+  .near_func.text    ro code  0x008e05    0xc  stm8l10x_tim3.o [1]
+  .near_func.text    ro code  0x008e11    0xb  Motor_Control.o [1]
+  .near_func.text    ro code  0x008e1c    0xb  Motor_Control.o [1]
+  .near_func.text    ro code  0x008e27    0xb  Motor_Control.o [1]
+  .near_func.text    ro code  0x008e32    0xb  Motor_Control.o [1]
+  .near_func.text    ro code  0x008e3d    0xb  stm8l10x_tim3.o [1]
+  .near_func.text    ro code  0x008e48    0x9  SoftPwm_Control.o [1]
+  .near_func.text    ro code  0x008e51    0x9  SoftPwm_Control.o [1]
+  .near_func.text    ro code  0x008e5a    0x9  stm8l10x_tim3.o [1]
+  .near_func.text    ro code  0x008e63    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008e6b    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008e73    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008e7b    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008e83    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008e8b    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008e93    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008e9b    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008ea3    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008eab    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008eb3    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008ebb    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008ec3    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008ecb    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008ed3    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008edb    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008ee3    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008eeb    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008ef3    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008efb    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008f03    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008f0b    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008f13    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008f1b    0x8  Motor_Control.o [1]
+  .near_func.text    ro code  0x008f23    0x8  SoftPwm_Control.o [1]
+  .near_func.text    ro code  0x008f2b    0x7  stm8l10x_gpio.o [1]
+  .near_func.text    ro code  0x008f32    0x7  stm8l10x_gpio.o [1]
+  .near_func.text    ro code  0x008f39    0x7  stm8l10x_gpio.o [1]
+  .near_func.text    ro code  0x008f40    0x7  stm8l10x_it.o [1]
+  .near_func.text    ro code  0x008f47    0x6  Motor_Control.o [1]
+  .near_func.text    ro code  0x008f4d    0x6  Motor_Control.o [1]
+  .near_func.text    ro code  0x008f53    0x6  char.o [4]
+  .near_func.text    ro code  0x008f59    0x5  Receiver_PPM.o [1]
   .near_func.text    ro code  0x008f5e    0x5  stm8l10x_tim3.o [1]
   .near_func.text    ro code  0x008f63    0x5  stm8l10x_tim4.o [1]
   .near_func.text    ro code  0x008f68    0x5  stm8l10x_usart.o [1]
@@ -258,7 +259,7 @@ Zero (__iar_zero_init2)
 
 Copy (__iar_copy_init2)
     1 source range, total size 0x79:
-          0x008897  0x79
+          0x008892  0x79
     1 destination range, total size 0x79:
           0x000010  0x79
 
@@ -270,7 +271,7 @@ Copy (__iar_copy_init2)
 
     Module                 ro code  ro data  rw data
     ------                 -------  -------  -------
-C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj: [1]
+C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj: [1]
     Motor_Control.o            445       24       24
     Receiver_PPM.o             496       73       99
     SoftPwm_Control.o          403       24      108
@@ -325,8 +326,8 @@ dlstm8smn.a: [4]
 
 Entry                    Address   Size  Type      Object
 -----                    -------   ----  ----      ------
-.iar.init_table$$Base   0x008c43          --   Gb  - Linker created -
-.iar.init_table$$Limit  0x008c55          --   Gb  - Linker created -
+.iar.init_table$$Base   0x008c3e          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x008c50          --   Gb  - Linker created -
 ?add32_l0_l0_0x         0x008392         Code  Gb  long.o [4]
 ?add32_l0_l0_dl         0x00838a         Code  Gb  long.o [4]
 ?add32_l0_l0_l1         0x00838f         Code  Gb  long.o [4]
@@ -346,17 +347,17 @@ Entry                    Address   Size  Type      Object
 ?b7                     0x000007         Data  Gb  vregs.o [4]
 ?b8                     0x000008         Data  Gb  vregs.o [4]
 ?b9                     0x000009         Data  Gb  vregs.o [4]
-?dc32_l1                0x008d2e         Code  Gb  dc_util.o [4]
-?dc32_px                0x008d3b         Code  Gb  dc_util.o [4]
+?dc32_l1                0x008d29         Code  Gb  dc_util.o [4]
+?dc32_px                0x008d36         Code  Gb  dc_util.o [4]
 ?dec32_0x_0x            0x008376         Code  Gb  long.o [4]
 ?dec32_l1_l1            0x008371         Code  Gb  long.o [4]
 ?e0                     0x000001         Data  Gb  vregs.o [4]
 ?e1                     0x000005         Data  Gb  vregs.o [4]
 ?e2                     0x000009         Data  Gb  vregs.o [4]
 ?e3                     0x00000d         Data  Gb  vregs.o [4]
-?epilogue_l2            0x008732         Code  Gb  vreg_util.o [4]
-?epilogue_l2_l3         0x00872f         Code  Gb  vreg_util.o [4]
-?epilogue_w4            0x008736         Code  Gb  vreg_util.o [4]
+?epilogue_l2            0x00872d         Code  Gb  vreg_util.o [4]
+?epilogue_l2_l3         0x00872a         Code  Gb  vreg_util.o [4]
+?epilogue_w4            0x008731         Code  Gb  vreg_util.o [4]
 ?fcastf32u16_l0_x       0x0081ce         Code  Gb  float.o [4]
 ?fcasts16f32_x_l0       0x0081ec         Code  Gb  float.o [4]
 ?fcastu32f32_l0_l0      0x008221         Code  Gb  float.o [4]
@@ -369,42 +370,42 @@ Entry                    Address   Size  Type      Object
 ?l1                     0x000004         Data  Gb  vregs.o [4]
 ?l2                     0x000008         Data  Gb  vregs.o [4]
 ?l3                     0x00000c         Data  Gb  vregs.o [4]
-?load32_0x_l0           0x008af9         Code  Gb  long_util.o [4]
-?load32_0x_l1           0x008b07         Code  Gb  long_util.o [4]
-?load32_0x_l2           0x008b15         Code  Gb  long_util.o [4]
-?load32_asp_l0          0x008aed         Code  Gb  long_util.o [4]
-?load32_dbsp_l0         0x008ae8         Code  Gb  long_util.o [4]
-?load32_l0_0x           0x008ad0         Code  Gb  long_util.o [4]
-?load32_l0_asp          0x008ac5         Code  Gb  long_util.o [4]
-?load32_l0_dbsp         0x008ac0         Code  Gb  long_util.o [4]
-?load32_l0_xsp          0x008ac7         Code  Gb  long_util.o [4]
-?load32_l1_0x           0x008adc         Code  Gb  long_util.o [4]
-?load32_xsp_l0          0x008aef         Code  Gb  long_util.o [4]
-?mov_e0_e1              0x00874b         Code  Gb  vreg_util.o [4]
-?mov_e0_e2              0x008758         Code  Gb  vreg_util.o [4]
-?mov_e1_e0              0x008765         Code  Gb  vreg_util.o [4]
-?mov_l0_l1              0x008748         Code  Gb  vreg_util.o [4]
-?mov_l0_l2              0x008755         Code  Gb  vreg_util.o [4]
-?mov_l1_l0              0x008762         Code  Gb  vreg_util.o [4]
-?mov_w1_w3              0x00874e         Code  Gb  vreg_util.o [4]
-?mov_w1_w4              0x00873a         Code  Gb  vreg_util.o [4]
-?mov_w1_w5              0x00875b         Code  Gb  vreg_util.o [4]
-?mov_w2_w1              0x008741         Code  Gb  vreg_util.o [4]
-?mov_w3_w1              0x008768         Code  Gb  vreg_util.o [4]
-?pop_l0                 0x0086fb         Code  Gb  vreg_util.o [4]
-?pop_l1                 0x008706         Code  Gb  vreg_util.o [4]
-?pop_l2                 0x008711         Code  Gb  vreg_util.o [4]
-?pop_l3                 0x00871c         Code  Gb  vreg_util.o [4]
-?pop_w4                 0x0086bb         Code  Gb  vreg_util.o [4]
-?push_l0                0x0086ca         Code  Gb  vreg_util.o [4]
-?push_l1                0x0086cf         Code  Gb  vreg_util.o [4]
-?push_l2                0x0086d4         Code  Gb  vreg_util.o [4]
-?push_l3                0x0086d9         Code  Gb  vreg_util.o [4]
-?push_w4                0x0086a3         Code  Gb  vreg_util.o [4]
+?load32_0x_l0           0x008af4         Code  Gb  long_util.o [4]
+?load32_0x_l1           0x008b02         Code  Gb  long_util.o [4]
+?load32_0x_l2           0x008b10         Code  Gb  long_util.o [4]
+?load32_asp_l0          0x008ae8         Code  Gb  long_util.o [4]
+?load32_dbsp_l0         0x008ae3         Code  Gb  long_util.o [4]
+?load32_l0_0x           0x008acb         Code  Gb  long_util.o [4]
+?load32_l0_asp          0x008ac0         Code  Gb  long_util.o [4]
+?load32_l0_dbsp         0x008abb         Code  Gb  long_util.o [4]
+?load32_l0_xsp          0x008ac2         Code  Gb  long_util.o [4]
+?load32_l1_0x           0x008ad7         Code  Gb  long_util.o [4]
+?load32_xsp_l0          0x008aea         Code  Gb  long_util.o [4]
+?mov_e0_e1              0x008746         Code  Gb  vreg_util.o [4]
+?mov_e0_e2              0x008753         Code  Gb  vreg_util.o [4]
+?mov_e1_e0              0x008760         Code  Gb  vreg_util.o [4]
+?mov_l0_l1              0x008743         Code  Gb  vreg_util.o [4]
+?mov_l0_l2              0x008750         Code  Gb  vreg_util.o [4]
+?mov_l1_l0              0x00875d         Code  Gb  vreg_util.o [4]
+?mov_w1_w3              0x008749         Code  Gb  vreg_util.o [4]
+?mov_w1_w4              0x008735         Code  Gb  vreg_util.o [4]
+?mov_w1_w5              0x008756         Code  Gb  vreg_util.o [4]
+?mov_w2_w1              0x00873c         Code  Gb  vreg_util.o [4]
+?mov_w3_w1              0x008763         Code  Gb  vreg_util.o [4]
+?pop_l0                 0x0086f6         Code  Gb  vreg_util.o [4]
+?pop_l1                 0x008701         Code  Gb  vreg_util.o [4]
+?pop_l2                 0x00870c         Code  Gb  vreg_util.o [4]
+?pop_l3                 0x008717         Code  Gb  vreg_util.o [4]
+?pop_w4                 0x0086b6         Code  Gb  vreg_util.o [4]
+?push_l0                0x0086c5         Code  Gb  vreg_util.o [4]
+?push_l1                0x0086ca         Code  Gb  vreg_util.o [4]
+?push_l2                0x0086cf         Code  Gb  vreg_util.o [4]
+?push_l3                0x0086d4         Code  Gb  vreg_util.o [4]
+?push_w4                0x00869e         Code  Gb  vreg_util.o [4]
 ?sdiv32_l0_l0_dl        0x008432         Code  Gb  long.o [4]
 ?sdiv32_l0_l0_l1        0x008435         Code  Gb  long.o [4]
-?sll8_a_a_5             0x008f59         Code  Gb  char.o [4]
-?sll8_a_a_6             0x008f58         Code  Gb  char.o [4]
+?sll8_a_a_5             0x008f54         Code  Gb  char.o [4]
+?sll8_a_a_6             0x008f53         Code  Gb  char.o [4]
 ?smod32_l1_l0_l1        0x008435         Code  Gb  long.o [4]
 ?sub32_l0_l0_0x         0x0083ad         Code  Gb  long.o [4]
 ?sub32_l0_l0_l1         0x0083aa         Code  Gb  long.o [4]
@@ -421,14 +422,14 @@ Entry                    Address   Size  Type      Object
 ?w7                     0x00000e         Data  Gb  vregs.o [4]
 AWU_IRQHandler          0x008f8c    0x1  Code  Gb  stm8l10x_it.o [1]
 CLK_MasterPrescalerConfig
-                        0x008dd3   0x10  Code  Gb  stm8l10x_clk.o [1]
+                        0x008dce   0x10  Code  Gb  stm8l10x_clk.o [1]
 CLK_PeripheralClockConfig
-                        0x008cfe   0x18  Code  Gb  stm8l10x_clk.o [1]
+                        0x008cf9   0x18  Code  Gb  stm8l10x_clk.o [1]
 COMP_IRQHandler         0x008f96    0x1  Code  Gb  stm8l10x_it.o [1]
 CSTACK$$Base            0x000500          --   Gb  - Linker created -
 CSTACK$$Limit           0x000600          --   Gb  - Linker created -
 Control_Data            0x0000d1   0x13  Data  Gb  Receiver_PPM.o [1]
-EXTI0_IRQHandler        0x008c55   0x20  Code  Gb  stm8l10x_it.o [1]
+EXTI0_IRQHandler        0x008c50   0x20  Code  Gb  stm8l10x_it.o [1]
 EXTI1_IRQHandler        0x008f8f    0x1  Code  Gb  stm8l10x_it.o [1]
 EXTI2_IRQHandler        0x008f90    0x1  Code  Gb  stm8l10x_it.o [1]
 EXTI3_IRQHandler        0x008f91    0x1  Code  Gb  stm8l10x_it.o [1]
@@ -438,100 +439,100 @@ EXTI6_IRQHandler        0x008f94    0x1  Code  Gb  stm8l10x_it.o [1]
 EXTI7_IRQHandler        0x008f95    0x1  Code  Gb  stm8l10x_it.o [1]
 EXTIB_IRQHandler        0x008f8d    0x1  Code  Gb  stm8l10x_it.o [1]
 EXTID_IRQHandler        0x008f8e    0x1  Code  Gb  stm8l10x_it.o [1]
-EXTI_ClearITPendingBit  0x008d46   0x16  Code  Gb  stm8l10x_exti.o [1]
-EXTI_DeInit             0x008ccc   0x19  Code  Gb  stm8l10x_exti.o [1]
-EXTI_SetPinSensitivity  0x00876f   0xa0  Code  Gb  stm8l10x_exti.o [1]
+EXTI_ClearITPendingBit  0x008d41   0x16  Code  Gb  stm8l10x_exti.o [1]
+EXTI_DeInit             0x008cc7   0x19  Code  Gb  stm8l10x_exti.o [1]
+EXTI_SetPinSensitivity  0x00876a   0xa0  Code  Gb  stm8l10x_exti.o [1]
 FLASH_IRQHandler        0x008f8b    0x1  Code  Gb  stm8l10x_it.o [1]
-GPIO_Init               0x008b23   0x52  Code  Gb  stm8l10x_gpio.o [1]
-GPIO_ReadInputDataBit   0x008f3e    0x7  Code  Gb  stm8l10x_gpio.o [1]
+GPIO_Init               0x008b1e   0x52  Code  Gb  stm8l10x_gpio.o [1]
+GPIO_ReadInputDataBit   0x008f39    0x7  Code  Gb  stm8l10x_gpio.o [1]
 GPIO_ResetBits          0x008f72    0x4  Code  Gb  stm8l10x_gpio.o [1]
-GPIO_SetBits            0x008f30    0x7  Code  Gb  stm8l10x_gpio.o [1]
-GPIO_ToggleBits         0x008f37    0x7  Code  Gb  stm8l10x_gpio.o [1]
+GPIO_SetBits            0x008f2b    0x7  Code  Gb  stm8l10x_gpio.o [1]
+GPIO_ToggleBits         0x008f32    0x7  Code  Gb  stm8l10x_gpio.o [1]
 I2C_IRQHandler          0x008f9c    0x1  Code  Gb  stm8l10x_it.o [1]
 INTVEC$$Base            0x008000          --   Gb  - Linker created -
 INTVEC$$Limit           0x008080          --   Gb  - Linker created -
-Motor1DirB              0x008ef8    0x8  Code  Gb  Motor_Control.o [1]
-Motor1DirF              0x008ec8    0x8  Code  Gb  Motor_Control.o [1]
-Motor1OutH              0x008e68    0x8  Code  Gb  Motor_Control.o [1]
-Motor1OutL              0x008e98    0x8  Code  Gb  Motor_Control.o [1]
-Motor2DirB              0x008f00    0x8  Code  Gb  Motor_Control.o [1]
-Motor2DirF              0x008ed0    0x8  Code  Gb  Motor_Control.o [1]
-Motor2OutH              0x008e70    0x8  Code  Gb  Motor_Control.o [1]
-Motor2OutL              0x008ea0    0x8  Code  Gb  Motor_Control.o [1]
-Motor3DirB              0x008f08    0x8  Code  Gb  Motor_Control.o [1]
-Motor3DirF              0x008ed8    0x8  Code  Gb  Motor_Control.o [1]
-Motor3OutH              0x008e78    0x8  Code  Gb  Motor_Control.o [1]
-Motor3OutL              0x008ea8    0x8  Code  Gb  Motor_Control.o [1]
-Motor4DirB              0x008f10    0x8  Code  Gb  Motor_Control.o [1]
-Motor4DirF              0x008ee0    0x8  Code  Gb  Motor_Control.o [1]
-Motor4OutH              0x008e80    0x8  Code  Gb  Motor_Control.o [1]
-Motor4OutL              0x008eb0    0x8  Code  Gb  Motor_Control.o [1]
-Motor5DirB              0x008f18    0x8  Code  Gb  Motor_Control.o [1]
-Motor5DirF              0x008ee8    0x8  Code  Gb  Motor_Control.o [1]
-Motor5OutH              0x008e88    0x8  Code  Gb  Motor_Control.o [1]
-Motor5OutL              0x008eb8    0x8  Code  Gb  Motor_Control.o [1]
-Motor6DirB              0x008f20    0x8  Code  Gb  Motor_Control.o [1]
-Motor6DirF              0x008ef0    0x8  Code  Gb  Motor_Control.o [1]
-Motor6OutH              0x008e90    0x8  Code  Gb  Motor_Control.o [1]
-Motor6OutL              0x008ec0    0x8  Code  Gb  Motor_Control.o [1]
+Motor1DirB              0x008ef3    0x8  Code  Gb  Motor_Control.o [1]
+Motor1DirF              0x008ec3    0x8  Code  Gb  Motor_Control.o [1]
+Motor1OutH              0x008e63    0x8  Code  Gb  Motor_Control.o [1]
+Motor1OutL              0x008e93    0x8  Code  Gb  Motor_Control.o [1]
+Motor2DirB              0x008efb    0x8  Code  Gb  Motor_Control.o [1]
+Motor2DirF              0x008ecb    0x8  Code  Gb  Motor_Control.o [1]
+Motor2OutH              0x008e6b    0x8  Code  Gb  Motor_Control.o [1]
+Motor2OutL              0x008e9b    0x8  Code  Gb  Motor_Control.o [1]
+Motor3DirB              0x008f03    0x8  Code  Gb  Motor_Control.o [1]
+Motor3DirF              0x008ed3    0x8  Code  Gb  Motor_Control.o [1]
+Motor3OutH              0x008e73    0x8  Code  Gb  Motor_Control.o [1]
+Motor3OutL              0x008ea3    0x8  Code  Gb  Motor_Control.o [1]
+Motor4DirB              0x008f0b    0x8  Code  Gb  Motor_Control.o [1]
+Motor4DirF              0x008edb    0x8  Code  Gb  Motor_Control.o [1]
+Motor4OutH              0x008e7b    0x8  Code  Gb  Motor_Control.o [1]
+Motor4OutL              0x008eab    0x8  Code  Gb  Motor_Control.o [1]
+Motor5DirB              0x008f13    0x8  Code  Gb  Motor_Control.o [1]
+Motor5DirF              0x008ee3    0x8  Code  Gb  Motor_Control.o [1]
+Motor5OutH              0x008e83    0x8  Code  Gb  Motor_Control.o [1]
+Motor5OutL              0x008eb3    0x8  Code  Gb  Motor_Control.o [1]
+Motor6DirB              0x008f1b    0x8  Code  Gb  Motor_Control.o [1]
+Motor6DirF              0x008eeb    0x8  Code  Gb  Motor_Control.o [1]
+Motor6OutH              0x008e8b    0x8  Code  Gb  Motor_Control.o [1]
+Motor6OutL              0x008ebb    0x8  Code  Gb  Motor_Control.o [1]
 MotorDirBackwardsFunc   0x00001c    0xc  Data  Gb  Motor_Control.o [1]
 MotorDirForwardFunc     0x000010    0xc  Data  Gb  Motor_Control.o [1]
-MotorGPIO_Init          0x0089ef   0x6c  Code  Lc  Motor_Control.o [1]
-Motor_Init              0x008c75   0x1e  Code  Gb  Motor_Control.o [1]
-Motor_Process           0x008bba   0x3b  Code  Gb  Motor_Control.o [1]
-PPM_Decode              0x00880f   0x88  Code  Gb  Receiver_PPM.o [1]
+MotorGPIO_Init          0x0089ea   0x6c  Code  Lc  Motor_Control.o [1]
+Motor_Init              0x008c70   0x1e  Code  Gb  Motor_Control.o [1]
+Motor_Process           0x008bb5   0x3b  Code  Gb  Motor_Control.o [1]
+PPM_Decode              0x00880a   0x88  Code  Gb  Receiver_PPM.o [1]
 PPM_Decode::Last_RisingEdge_Time
                         0x0000f6    0x2  Data  Lc  Receiver_PPM.o [1]
 PPM_Decode::PPM_CH      0x0000f8    0x1  Data  Lc  Receiver_PPM.o [1]
-PPM_Reveiver_Init       0x008b75   0x45  Code  Gb  Receiver_PPM.o [1]
+PPM_Reveiver_Init       0x008b70   0x45  Code  Gb  Receiver_PPM.o [1]
 PWM_CurrentData         0x000028   0x49  Data  Gb  Receiver_PPM.o [1]
 PWM_DeviceTurnOffFunc   0x00007d    0xc  Data  Gb  SoftPwm_Control.o [1]
 PWM_DeviceTurnOnFunc    0x000071    0xc  Data  Gb  SoftPwm_Control.o [1]
-Region$$Table$$Base     0x008c43          --   Gb  - Linker created -
-Region$$Table$$Limit    0x008c55          --   Gb  - Linker created -
+Region$$Table$$Base     0x008c3e          --   Gb  - Linker created -
+Region$$Table$$Limit    0x008c50          --   Gb  - Linker created -
 SPI_IRQHandler          0x008f9a    0x1  Code  Gb  stm8l10x_it.o [1]
 SoftPwmDevice           0x000089   0x48  Data  Gb  SoftPwm_Control.o [1]
-SoftPwmInit             0x008910   0x72  Code  Gb  SoftPwm_Control.o [1]
+SoftPwmInit             0x00890b   0x72  Code  Gb  SoftPwm_Control.o [1]
 TIM2_CAP_IRQHandler     0x008f98    0x1  Code  Gb  stm8l10x_it.o [1]
 TIM2_UPD_OVF_TRG_BRK_IRQHandler
                         0x008f97    0x1  Code  Gb  stm8l10x_it.o [1]
-TIM3_ARRPreloadConfig   0x008dfd    0xd  Code  Gb  stm8l10x_tim3.o [1]
+TIM3_ARRPreloadConfig   0x008df8    0xd  Code  Gb  stm8l10x_tim3.o [1]
 TIM3_CAP_IRQHandler     0x008f99    0x1  Code  Gb  stm8l10x_it.o [1]
-TIM3_ClearFlag          0x008e42    0xb  Code  Gb  stm8l10x_tim3.o [1]
+TIM3_ClearFlag          0x008e3d    0xb  Code  Gb  stm8l10x_tim3.o [1]
 TIM3_ClearITPendingBit  0x008f5e    0x5  Code  Gb  stm8l10x_tim3.o [1]
-TIM3_Cmd                0x008df0    0xd  Code  Gb  stm8l10x_tim3.o [1]
-TIM3_DeInit             0x008a5b   0x65  Code  Gb  stm8l10x_tim3.o [1]
-TIM3_GetCounter         0x008e0a    0xc  Code  Gb  stm8l10x_tim3.o [1]
-TIM3_ITConfig           0x008d16   0x18  Code  Gb  stm8l10x_tim3.o [1]
-TIM3_TimeBaseInit       0x008cb1   0x1b  Code  Gb  stm8l10x_tim3.o [1]
+TIM3_Cmd                0x008deb    0xd  Code  Gb  stm8l10x_tim3.o [1]
+TIM3_DeInit             0x008a56   0x65  Code  Gb  stm8l10x_tim3.o [1]
+TIM3_GetCounter         0x008e05    0xc  Code  Gb  stm8l10x_tim3.o [1]
+TIM3_ITConfig           0x008d11   0x18  Code  Gb  stm8l10x_tim3.o [1]
+TIM3_TimeBaseInit       0x008cac   0x1b  Code  Gb  stm8l10x_tim3.o [1]
 TIM3_UPD_OVF_TRG_BRK_IRQHandler
-                        0x008d5c   0x15  Code  Gb  stm8l10x_it.o [1]
+                        0x008d57   0x15  Code  Gb  stm8l10x_it.o [1]
 TIM4_ClearITPendingBit  0x008f63    0x5  Code  Gb  stm8l10x_tim4.o [1]
 TIM4_UPD_OVF_IRQHandler
-                        0x008d71   0x15  Code  Gb  stm8l10x_it.o [1]
+                        0x008d6c   0x15  Code  Gb  stm8l10x_it.o [1]
 TRAP_IRQHandler         0x008f8a    0x1  Code  Gb  stm8l10x_it.o [1]
-Throttle_Analysis       0x008486  0x116  Code  Gb  Receiver_PPM.o [1]
+Throttle_Analysis       0x008486  0x111  Code  Gb  Receiver_PPM.o [1]
 Throttle_Analysis::pwm_float
                         0x0000e4    0x4  Data  Lc  Receiver_PPM.o [1]
 USART_ClearITPendingBit
                         0x008f68    0x5  Code  Gb  stm8l10x_usart.o [1]
-USART_RX_IRQHandler     0x008ce5   0x19  Code  Gb  stm8l10x_it.o [1]
+USART_RX_IRQHandler     0x008ce0   0x19  Code  Gb  stm8l10x_it.o [1]
 USART_ReceiveData8      0x008f76    0x4  Code  Gb  stm8l10x_usart.o [1]
 USART_SendData8         0x008f7a    0x4  Code  Gb  stm8l10x_usart.o [1]
 USART_TX_IRQHandler     0x008f9b    0x1  Code  Gb  stm8l10x_it.o [1]
 __DebugBreak            0x008f9d    0x1  Code  Gb  __dbg_break.o [3]
-__exit                  0x008d9a   0x14  Code  Gb  __dbg_xxexit.o [3]
-__iar_copy_init2        0x008bf5         Code  Gb  init_small.o [4]
-__iar_data_init2        0x008d86   0x14  Code  Gb  init.o [4]
-__iar_program_start     0x008dae         Code  Gb  cstartup.o [4]
+__exit                  0x008d95   0x14  Code  Gb  __dbg_xxexit.o [3]
+__iar_copy_init2        0x008bf0         Code  Gb  init_small.o [4]
+__iar_data_init2        0x008d81   0x14  Code  Gb  init.o [4]
+__iar_program_start     0x008da9         Code  Gb  cstartup.o [4]
 __iar_unhandled_exception
                         0x008f87         Code  Gb  unhandled_exception.o [4]
-__iar_zero_init2        0x008c93         Code  Gb  init_small.o [4]
+__iar_zero_init2        0x008c8e         Code  Gb  init_small.o [4]
 __intvec                0x008000         Data  Gb  interrupt.o [4]
 __low_level_init        0x008f81    0x3  Code  Gb  low_level_init.o [4]
 _exit                   0x008f6d         Code  Gb  cexit.o [4]
 _interrupt_1            0x008f8a         Code  Gb  stm8l10x_it.o [1]
-_interrupt_10           0x008c55         Code  Gb  stm8l10x_it.o [1]
+_interrupt_10           0x008c50         Code  Gb  stm8l10x_it.o [1]
 _interrupt_11           0x008f8f         Code  Gb  stm8l10x_it.o [1]
 _interrupt_12           0x008f90         Code  Gb  stm8l10x_it.o [1]
 _interrupt_13           0x008f91         Code  Gb  stm8l10x_it.o [1]
@@ -542,27 +543,27 @@ _interrupt_17           0x008f95         Code  Gb  stm8l10x_it.o [1]
 _interrupt_20           0x008f96         Code  Gb  stm8l10x_it.o [1]
 _interrupt_21           0x008f97         Code  Gb  stm8l10x_it.o [1]
 _interrupt_22           0x008f98         Code  Gb  stm8l10x_it.o [1]
-_interrupt_23           0x008d5c         Code  Gb  stm8l10x_it.o [1]
+_interrupt_23           0x008d57         Code  Gb  stm8l10x_it.o [1]
 _interrupt_24           0x008f99         Code  Gb  stm8l10x_it.o [1]
-_interrupt_27           0x008d71         Code  Gb  stm8l10x_it.o [1]
+_interrupt_27           0x008d6c         Code  Gb  stm8l10x_it.o [1]
 _interrupt_28           0x008f9a         Code  Gb  stm8l10x_it.o [1]
 _interrupt_29           0x008f9b         Code  Gb  stm8l10x_it.o [1]
 _interrupt_3            0x008f8b         Code  Gb  stm8l10x_it.o [1]
-_interrupt_30           0x008ce5         Code  Gb  stm8l10x_it.o [1]
+_interrupt_30           0x008ce0         Code  Gb  stm8l10x_it.o [1]
 _interrupt_31           0x008f9c         Code  Gb  stm8l10x_it.o [1]
 _interrupt_6            0x008f8c         Code  Gb  stm8l10x_it.o [1]
 _interrupt_8            0x008f8d         Code  Gb  stm8l10x_it.o [1]
 _interrupt_9            0x008f8e         Code  Gb  stm8l10x_it.o [1]
 exit                    0x008f84    0x3  Code  Gb  exit.o [4]
 i                       0x0000f4    0x2  Data  Gb  main.o [1]
-main                    0x008982   0x6d  Code  Gb  main.o [1]
-soft_pwm                0x00859c  0x107  Code  Gb  SoftPwm_Control.o [1]
+main                    0x00897d   0x6d  Code  Gb  main.o [1]
+soft_pwm                0x008597  0x107  Code  Gb  SoftPwm_Control.o [1]
 soft_pwm::on_time       0x0000ec    0x4  Data  Lc  SoftPwm_Control.o [1]
 soft_pwm::pwm_float     0x0000f0    0x4  Data  Lc  SoftPwm_Control.o [1]
 soft_pwm::sys_cnt_now   0x0000e8    0x4  Data  Lc  SoftPwm_Control.o [1]
 
 
-[1] = C:\Users\WanBean\Desktop\excavator_esc\Project\Debug\Obj
+[1] = C:\Users\WanBean\Desktop\excavator_motor_drive_87scale\Project\Debug\Obj
 [2] = command line
 [3] = dbgstm8smd.a
 [4] = dlstm8smn.a
