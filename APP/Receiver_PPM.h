@@ -31,13 +31,20 @@ typedef struct
   uint16_t       Magnitude[6];
   uint8_t        Light_Status;
 } CONTROL_DATA;
+
+typedef struct
+{
+  uint16_t PWM_Max[8];
+  uint16_t PWM_Mid[8];
+  uint16_t PWM_Min[8];
+} PWM_CALIBRATION;
 //#pragma pack() //保存对齐状态
 /* ---------------------------------------Private define ------------------------------------------- */
 //PPM信号输入引脚
 #define PPM_Input_PORT GPIOA
 #define PPM_Input_PIN GPIO_Pin_0
 //Flash 储存地址
-#define PWM1_MAXAdd 0x9BFF
+#define PWM1_MAXAdd  0x9BFF
 #define PWM1_MIDAdd PWM1_MAXAdd + 2
 #define PWM1_MINAdd PWM1_MIDAdd + 2
 

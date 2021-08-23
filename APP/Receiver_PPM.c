@@ -203,11 +203,91 @@ static void Read_Flash_PWM(void)
   */
 static void Write_Flash_PWM(uint16_t Address,uint16_t Data)
 {
-  //写最大值
-  FLASH_ProgramByte(Address,BYTE_1(Data));
-  while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-  FLASH_ProgramByte(Address + 1,BYTE_0(Data));
-  while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
+  for(uint8_t i = 0;i < 8;i ++)
+  {
+    FLASH_ProgramByte(Address + 2 * i,BYTE_1(Data + i * 2));
+    while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
+    FLASH_ProgramByte(Address + (2 * i + 1),BYTE_0(Data + i * 2));
+    while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
+  }
+}
+
+
+
+void PWMCalibrationProcess(uint16_t *PWM_AVG,PWM_CURRENTDATA *CurrentData)
+{
+  static uint8_t CentreCaptureStatus = 0;//0:中值 1:最大值 2:最小值 5:计算平均值 6:ready
+  static uint16_t PWM_Temp,Last_PWM_Current;
+  //摇杆需连续保持不动1S
+  if(abs(Last_PWM_Current - *PWM_Current) < (DeadZone/2))
+  {
+    CentreCaptureStatus ++;
+  }
+  else
+  {
+    CentreCaptureStatus = 0;
+    PWM_Temp = 0;
+  }
+  //摇杆不动2S开始采集
+  if(CentreCaptureStatus > 40)
+  {
+    PWM_Temp += *PWM_Current;
+  }
+  //采集10次
+  if(CentreCaptureStatus == 50)
+  {
+    *PWM_AVG = PWM_Temp/10;
+    CentreCaptureStatus = 0;
+    PWM_Temp = 0;
+    Last_PWM_Current = 0;
+    //检查最大值 如不合法,重新采集
+    if(PWM_CurrentData.PWM_Ready % 3 == 0)
+    {
+      //不够大 或者超过2000
+      if((*PWM_AVG < PWM_CentreRef + SwitchThreshold)||(*PWM_AVG > PWM_MaxRef))
+      {
+        return;
+      }
+      //合法,保存到Flash
+      else
+      {
+        Write_Flash_PWM(*PWM_AVG);
+      }
+    }
+    //检查中值 如不合法,重新采集
+    else if(PWM_CurrentData.PWM_Ready % 3 == 1)
+    {
+      if(ABS(*PWM_AVG - PWM_CentreRef) > 20)
+      {
+        return;
+      }
+      //合法,保存到Flash
+      else
+      {
+        //写入油门中值
+        Write_Flash_PWM1Mid(*PWM_AVG);
+        //写入灯组中值
+        
+        Write_Flash_PWM2Mid(PWM_CurrentData.PWM_Data[1]);
+      }
+    }
+    //检查最小值 如不合法,重新采集
+    else if(PWM_CurrentData.PWM_Ready % 3 == 2)
+    {
+      //不够小 或者小于2000
+      if((*PWM_AVG > PWM_CentreRef - SwitchThreshold)||(*PWM_AVG < PWM_MinRef))
+      {
+        return;
+      }
+      //合法,保存到Flash
+      else
+      {
+        Write_Flash_PWM1Min(*PWM_AVG);
+      }
+    }
+    PWM_CurrentData.PWM_Ready ++;
+  }
+  Last_PWM_Current = *PWM_Current;
 }
 
 #if 0
@@ -216,7 +296,7 @@ static void Write_Flash_PWM(uint16_t Address,uint16_t Data)
   * @param  PWM_Current:当前采集的PWM值
   * @retval None
   */
-static void PWM_AVG_Calculate(uint16_t *PWM_AVG,uint16_t *PWM_Current)
+void PWMCalibrationProcess(uint16_t *PWM_AVG,uint16_t *PWM_Current)
 {
   static uint8_t CentreCaptureStatus = 0;//0-4:采集 5:计算平均值 6:ready
   static uint16_t PWM_Temp,Last_PWM_Current;
