@@ -1,5 +1,5 @@
 /*****************************************************************************************************
-* @file    Reveiver_PPM.h									     * 
+* @file    Reveiver_PPM.h									                                                                                                                                              * 
 * @author  WanBean										     *
 * @version V1.0                                                         			     *
 * @date    2020-03-27    									     *
@@ -21,7 +21,7 @@ typedef struct
   uint16_t PWM_Mid[8];
   uint16_t PWM_Min[8];
   uint16_t PWM_Data[8];
-  uint8_t PWM_Status[8];
+  uint8_t PWM_Status;
   uint8_t Fail_Safe;
 } PWM_CURRENTDATA;
 

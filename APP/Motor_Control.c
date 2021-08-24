@@ -239,3 +239,29 @@ void Motor_Process(uint16_t sys_cnt)
 //  SoftPwmDevice[Arm_Motor].pwm = 10;
   soft_pwm(sys_cnt);
 }
+
+/**
+  * @brief  电机发声
+  * @param  频率系数
+  * @retval None
+  */
+void Motor_Beep(uint16_t SysCnt,uint8_t Frequency)
+{
+  GPIO_SetBits(MOTOR1_PWM_PORT, MOTOR1_PWM_PIN);
+  GPIO_SetBits(MOTOR2_PWM_PORT, MOTOR2_PWM_PIN);
+  GPIO_SetBits(MOTOR3_PWM_PORT, MOTOR3_PWM_PIN);
+  GPIO_SetBits(MOTOR4_PWM_PORT, MOTOR4_PWM_PIN);
+  GPIO_SetBits(MOTOR5_PWM_PORT, MOTOR5_PWM_PIN);
+  GPIO_SetBits(MOTOR6_PWM_PORT, MOTOR6_PWM_PIN);
+
+  if((SysCnt % Frequency) == 0)
+  {
+      GPIO_ToggleBits(MOTOR1_DIR_PORT, MOTOR1_DIR_PIN);
+      GPIO_ToggleBits(MOTOR2_DIR_PORT, MOTOR2_DIR_PIN);
+      GPIO_ToggleBits(MOTOR3_DIR_PORT, MOTOR3_DIR_PIN);
+      GPIO_ToggleBits(MOTOR4_DIR_PORT, MOTOR4_DIR_PIN);
+      GPIO_ToggleBits(MOTOR5_DIR_PORT, MOTOR5_DIR_PIN);
+      GPIO_ToggleBits(MOTOR6_DIR_PORT, MOTOR6_DIR_PIN);
+  }
+}
+

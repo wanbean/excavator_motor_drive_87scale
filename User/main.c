@@ -91,7 +91,7 @@ void LightGPIO_Init(void)
   GPIO_ResetBits(Shell_Lamp_PORT,Shell_Lamp_PIN);
 }
 
-uint16_t i = 0;
+uint16_t i = 0,j = 0;
 void main(void)
 {
   CLK_MasterPrescalerConfig(CLK_MasterPrescaler_HSIDiv1);
@@ -109,7 +109,7 @@ void main(void)
       
       i+=3;
       if(i >= 60001) i = 0;
-      
+#if 0
       if(PWM_CurrentData.Fail_Safe == 0) PWM_CurrentData.Fail_Safe = 1;
       
       
@@ -125,7 +125,40 @@ void main(void)
       {
         sigLostCnt = 0;
       }
-      Motor_Process(i);
+#endif
+      
+      if(PWM_CurrentData.PWM_Status == 0)
+      {
+        Motor_Beep(i,1);
+        if(++j == 10000)
+        {
+          PWM_CurrentData.PWM_Status = 1;
+          j = 0;
+        }
+      }
+      else if(PWM_CurrentData.PWM_Status == 2)
+      {
+        Motor_Beep(i,10);
+        if(++j == 10000)
+        {
+          PWM_CurrentData.PWM_Status = 3;
+          j = 0;
+        }
+      }
+      else if(PWM_CurrentData.PWM_Status == 4)
+      {
+        Motor_Beep(i,100);
+        if(++j == 10000)
+        {
+          PWM_CurrentData.PWM_Status = 5;
+          j = 0;
+        }
+      }
+      else if(PWM_CurrentData.PWM_Status == 6)
+      {
+        Motor_Process(i);
+      }
+      
   }
 }
 

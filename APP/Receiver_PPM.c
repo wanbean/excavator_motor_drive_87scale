@@ -1,9 +1,9 @@
 /*****************************************************************************************************
-* @file    Receiver_PPM.c									     * 
-* @author  WanBean                                                                                   *
-* @version V1.0                                                         			     *
-* @date    2020-03-27                                                                                *
-* @brief                                               					             *
+* @file    Receiver_PPM.c									     																														* 
+* @author  WanBean                                                                                   																					*
+* @version V1.0                                                         			     																										*
+* @date    2020-03-27                                                                                																						*
+* @brief                                               					             																													*
 ******************************************************************************************************/
 /* ---------------------------------------Include--------------------------------------------------- */
 #include "Receiver_PPM.h"
@@ -24,7 +24,7 @@ PWM_CURRENTDATA PWM_CurrentData = {
     .PWM_Mid = {PWM_CentreRef, PWM_CentreRef, PWM_CentreRef, PWM_CentreRef, PWM_CentreRef, PWM_CentreRef, PWM_CentreRef, PWM_CentreRef},
     .PWM_Min = {PWM_MinRef, PWM_MinRef, PWM_MinRef, PWM_MinRef, PWM_MinRef, PWM_MinRef, PWM_MinRef, PWM_MinRef},
     .PWM_Data = {PWM_CentreRef, PWM_CentreRef, PWM_CentreRef, PWM_CentreRef, PWM_CentreRef, PWM_CentreRef, PWM_CentreRef, PWM_CentreRef},
-    .PWM_Status = {8, 7, 6, 5, 4, 3, 2, 1},
+    .PWM_Status = 6,//0:校准 1:正常
 };
 CONTROL_DATA Control_Data = {
     .Magnitude = {0, 0, 0, 0, 0, 0},
@@ -51,7 +51,7 @@ void PPM_Reveiver_Init(void)
   //自动预装载使能
   TIM3_ARRPreloadConfig(ENABLE);
 
-  //使能TIM2输出
+  //使能TIM3中断
   TIM3_ITConfig(TIM3_IT_Update, ENABLE);
   //TIM3计数器使能
   TIM3_Cmd(ENABLE);
@@ -215,29 +215,26 @@ static void Write_Flash_PWM(uint16_t Address, PWM_CALIBRATION *Data)
 {
   for (uint8_t i = 0; i < 6; i++)
   {
-    FLASH_ProgramByte((Address + i),BYTE_1(Data->PWM_Max[i]));
+    FLASH_ProgramByte((Address + 3 * i),BYTE_1(Data->PWM_Max[i]));
     while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-    
-    FLASH_ProgramByte((Address + i + 1),BYTE_0(Data->PWM_Max[i]));
-    while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-
-    FLASH_ProgramByte((Address + i + 8),BYTE_1(Data->PWM_Mid[i]));
-    while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-    
-    FLASH_ProgramByte((Address + i + 9),BYTE_0(Data->PWM_Mid[i]));
+    FLASH_ProgramByte((Address + 3 * i + 1),BYTE_0(Data->PWM_Max[i]));
     while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
 
-    FLASH_ProgramByte((Address + i + 16),BYTE_1(Data->PWM_Min[i]));
+    FLASH_ProgramByte((Address + 3 * i + 2),BYTE_1(Data->PWM_Mid[i]));
     while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
-    
-    FLASH_ProgramByte((Address + i + 17),BYTE_0(Data->PWM_Min[i]));
+    FLASH_ProgramByte((Address + 3 * i + 3),BYTE_0(Data->PWM_Mid[i]));
+    while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
+
+    FLASH_ProgramByte((Address + 3 * i + 4),BYTE_1(Data->PWM_Min[i]));
+    while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
+    FLASH_ProgramByte((Address + 3 * i + 5),BYTE_0(Data->PWM_Min[i]));
     while (FLASH_GetFlagStatus(FLASH_FLAG_EOP) == RESET);
   }
 }
 
-uint8_t PWMCalibrationProcess(uint16_t *PWM_AVG, PWM_CURRENTDATA *CurrentData)
+uint8_t PWMCalibrationProcess(PWM_CURRENTDATA *CurrentData)
 {
-  static uint16_t CaptureCnt = 0;              //捕获计数，用于计时
+  static uint8_t CaptureCnt = 0;              //捕获计数，用于计时
   static uint8_t CurrentCalibrationStatus = 0; //0:中值 1:最大值 2:最小值 5:计算平均值 6:ready
   static uint16_t Last_PWM_Current[6];
   switch (CurrentCalibrationStatus)
@@ -258,7 +255,7 @@ uint8_t PWMCalibrationProcess(uint16_t *PWM_AVG, PWM_CURRENTDATA *CurrentData)
         if (abs(PWM_CentreRef - CurrentData->PWM_Data[4]) < (DeadZone / 2))
         if (abs(PWM_CentreRef - CurrentData->PWM_Data[5]) < (DeadZone / 2))
         { //采集值在合理范围
-          if (CaptureCnt++ == 1000)
+          if (CaptureCnt++ == 100)
           {
             Calibration_Data.PWM_Mid[0] = CurrentData->PWM_Data[0];
             Calibration_Data.PWM_Mid[1] = CurrentData->PWM_Data[1];
@@ -267,6 +264,7 @@ uint8_t PWMCalibrationProcess(uint16_t *PWM_AVG, PWM_CURRENTDATA *CurrentData)
             Calibration_Data.PWM_Mid[4] = CurrentData->PWM_Data[4];
             Calibration_Data.PWM_Mid[5] = CurrentData->PWM_Data[5];
             CurrentCalibrationStatus = 1;
+			CurrentData->PWM_Status = 2;
           }
         }
         else
@@ -281,7 +279,7 @@ uint8_t PWMCalibrationProcess(uint16_t *PWM_AVG, PWM_CURRENTDATA *CurrentData)
       break;
     }
     case 1: //采集最大值
-    {
+	{
       if (abs(Last_PWM_Current[0] - CurrentData->PWM_Data[0]) < (DeadZone / 2))
       if (abs(Last_PWM_Current[1] - CurrentData->PWM_Data[1]) < (DeadZone / 2))
       if (abs(Last_PWM_Current[2] - CurrentData->PWM_Data[2]) < (DeadZone / 2))
@@ -296,7 +294,7 @@ uint8_t PWMCalibrationProcess(uint16_t *PWM_AVG, PWM_CURRENTDATA *CurrentData)
         if (abs(PWM_MaxRef - CurrentData->PWM_Data[4]) < (DeadZone / 2))
         if (abs(PWM_MaxRef - CurrentData->PWM_Data[5]) < (DeadZone / 2))
         { //采集值在合理范围
-          if (CaptureCnt++ == 1000)
+          if (CaptureCnt++ == 100)
           {
             Calibration_Data.PWM_Max[0] = CurrentData->PWM_Data[0];
             Calibration_Data.PWM_Max[1] = CurrentData->PWM_Data[1];
@@ -305,6 +303,7 @@ uint8_t PWMCalibrationProcess(uint16_t *PWM_AVG, PWM_CURRENTDATA *CurrentData)
             Calibration_Data.PWM_Max[4] = CurrentData->PWM_Data[4];
             Calibration_Data.PWM_Max[5] = CurrentData->PWM_Data[5];
             CurrentCalibrationStatus = 2;
+			CurrentData->PWM_Status = 4;
           }
         }
         else
@@ -334,7 +333,7 @@ uint8_t PWMCalibrationProcess(uint16_t *PWM_AVG, PWM_CURRENTDATA *CurrentData)
         if (abs(PWM_MinRef - CurrentData->PWM_Data[4]) < (DeadZone / 2))
         if (abs(PWM_MinRef - CurrentData->PWM_Data[5]) < (DeadZone / 2))
         { //采集值在合理范围
-          if (CaptureCnt++ == 1000)
+          if (CaptureCnt++ == 100)
           {
             Calibration_Data.PWM_Min[0] = CurrentData->PWM_Data[0];
             Calibration_Data.PWM_Min[1] = CurrentData->PWM_Data[1];
@@ -343,6 +342,7 @@ uint8_t PWMCalibrationProcess(uint16_t *PWM_AVG, PWM_CURRENTDATA *CurrentData)
             Calibration_Data.PWM_Min[4] = CurrentData->PWM_Data[4];
             Calibration_Data.PWM_Min[5] = CurrentData->PWM_Data[5];
             CurrentCalibrationStatus = 3;
+			CurrentData->PWM_Status = 6;
           }
         }
         else
@@ -910,17 +910,24 @@ void PPM_Decode(void)
     if (PPM_CH == 8)
     {
       PWM_CurrentData.Fail_Safe = 0;
-      //TIM3_SetCounter(0);
-      //GPIO_ToggleBits(GPIOA,GPIO_Pin_3);
-      //      PWM_CurrentData.PWM_Max[0] = 1;
-      //      PWM_CurrentData.PWM_Status[1] = 17;
-      //      PWM_CurrentData.PWM_Status[2] = 16;
-      //      PWM_CurrentData.PWM_Status[3] = 15;
-      //      PWM_CurrentData.PWM_Status[4] = 14;
-      //      PWM_CurrentData.PWM_Status[5] = 13;
-      //      PWM_CurrentData.PWM_Status[6] = 12;
-      //      PWM_CurrentData.PWM_Status[7] = 11;
-      //PWM_Process();
+	  /* 校准进入判断 */
+	  static uint8_t calibrationCheckCnt = 0;
+		if(calibrationCheckCnt < 100)
+		{
+			++ calibrationCheckCnt;
+			if(PWM_CurrentData.PWM_Data[0] > (PWM_CentreRef + SwitchThreshold))
+			if(PWM_CurrentData.PWM_Data[1] > (PWM_CentreRef + SwitchThreshold))
+			if(PWM_CurrentData.PWM_Data[2] > (PWM_CentreRef + SwitchThreshold))
+			if(PWM_CurrentData.PWM_Data[3] > (PWM_CentreRef + SwitchThreshold))
+			{
+				PWM_CurrentData.PWM_Status = 0;
+			}
+		}
+		if(PWM_CurrentData.PWM_Status != 6)
+		{
+			if(PWMCalibrationProcess(PWM_CurrentData)) PWM_CurrentData.PWM_Status = 6;
+		}
+
     }
   }
   else
