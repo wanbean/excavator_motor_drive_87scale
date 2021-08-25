@@ -85,6 +85,7 @@ void Motor6DirB(void);
 
 void Motor_Init(void);
 void Motor_Process(uint16_t sys_cnt);
+uint8_t Motor_Beep(uint8_t Frequency,uint16_t HoldTime);
 
 
 #endif

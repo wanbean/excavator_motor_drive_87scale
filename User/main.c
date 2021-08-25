@@ -129,29 +129,23 @@ void main(void)
       
       if(PWM_CurrentData.PWM_Status == 0)
       {
-        Motor_Beep(i,1);
-        if(++j == 10000)
+        if(Motor_Beep(1,100))
         {
-          PWM_CurrentData.PWM_Status = 1;
-          j = 0;
+            PWM_CurrentData.PWM_Status = 5;
         }
       }
       else if(PWM_CurrentData.PWM_Status == 2)
       {
-        Motor_Beep(i,10);
-        if(++j == 10000)
+        if(Motor_Beep(5,100))
         {
-          PWM_CurrentData.PWM_Status = 3;
-          j = 0;
+            PWM_CurrentData.PWM_Status = 5;
         }
       }
       else if(PWM_CurrentData.PWM_Status == 4)
       {
-        Motor_Beep(i,100);
-        if(++j == 10000)
+        if(Motor_Beep(10,100))
         {
-          PWM_CurrentData.PWM_Status = 5;
-          j = 0;
+            PWM_CurrentData.PWM_Status = 5;
         }
       }
       else if(PWM_CurrentData.PWM_Status == 6)

@@ -245,14 +245,32 @@ void Motor_Process(uint16_t sys_cnt)
   * @param  ÆµÂÊÏµÊý
   * @retval None
   */
-void Motor_Beep(uint16_t SysCnt,uint8_t Frequency)
+uint8_t Motor_Beep(uint8_t Frequency,uint16_t HoldTime)
 {
-  GPIO_SetBits(MOTOR1_PWM_PORT, MOTOR1_PWM_PIN);
-  GPIO_SetBits(MOTOR2_PWM_PORT, MOTOR2_PWM_PIN);
-  GPIO_SetBits(MOTOR3_PWM_PORT, MOTOR3_PWM_PIN);
-  GPIO_SetBits(MOTOR4_PWM_PORT, MOTOR4_PWM_PIN);
-  GPIO_SetBits(MOTOR5_PWM_PORT, MOTOR5_PWM_PIN);
-  GPIO_SetBits(MOTOR6_PWM_PORT, MOTOR6_PWM_PIN);
+  static uint16_t LocalCnt = 0,LocalTime = 0;
+
+  if(LocalTime == 0)
+  {
+    GPIO_SetBits(MOTOR1_PWM_PORT, MOTOR1_PWM_PIN);
+    GPIO_SetBits(MOTOR2_PWM_PORT, MOTOR2_PWM_PIN);
+    GPIO_SetBits(MOTOR3_PWM_PORT, MOTOR3_PWM_PIN);
+    GPIO_SetBits(MOTOR4_PWM_PORT, MOTOR4_PWM_PIN);
+    GPIO_SetBits(MOTOR5_PWM_PORT, MOTOR5_PWM_PIN);
+    GPIO_SetBits(MOTOR6_PWM_PORT, MOTOR6_PWM_PIN);
+  }
+
+  if(++ LocalTime >= HoldTime)
+  {
+    LocalCnt = 0;
+    LocalTime = 0;
+    GPIO_ResetBits(MOTOR1_PWM_PORT, MOTOR1_PWM_PIN);
+    GPIO_ResetBits(MOTOR2_PWM_PORT, MOTOR2_PWM_PIN);
+    GPIO_ResetBits(MOTOR3_PWM_PORT, MOTOR3_PWM_PIN);
+    GPIO_ResetBits(MOTOR4_PWM_PORT, MOTOR4_PWM_PIN);
+    GPIO_ResetBits(MOTOR5_PWM_PORT, MOTOR5_PWM_PIN);
+    GPIO_ResetBits(MOTOR6_PWM_PORT, MOTOR6_PWM_PIN);
+    return 1;
+  }
 
   if((SysCnt % Frequency) == 0)
   {
@@ -263,5 +281,6 @@ void Motor_Beep(uint16_t SysCnt,uint8_t Frequency)
       GPIO_ToggleBits(MOTOR5_DIR_PORT, MOTOR5_DIR_PIN);
       GPIO_ToggleBits(MOTOR6_DIR_PORT, MOTOR6_DIR_PIN);
   }
+  return 0;
 }
 
