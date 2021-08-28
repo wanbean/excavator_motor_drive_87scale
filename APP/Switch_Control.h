@@ -70,6 +70,7 @@ void OutHOLD_INIT(void);
 void OutHoldOnOff(DEVICE_TYPE device,unsigned char onoff);
 void OutHoldAWhile(DEVICE_TYPE device,unsigned int waittime,unsigned int ontime);
 void OutHoldTimes(DEVICE_TYPE device,unsigned int times,unsigned int waittime,unsigned int ontime,unsigned int offtime);
+void OutHoldTimCnt(void);
 #endif
 
 #endif

@@ -8,6 +8,7 @@
 /* ---------------------------------------Include--------------------------------------------------- */
 #include "Receiver_PPM.h"
 #include "SoftPwm_Control.h"
+#include "Switch_Control.h"
 #include <stdlib.h>
 
 /* ---------------------------------------Private typedef ------------------------------------------ */
@@ -909,6 +910,7 @@ void PPM_Decode(void)
     //一帧数据结束,产生20ms周期定时
     if (PPM_CH == 8)
     {
+      OutHoldTimCnt();
       PWM_CurrentData.Fail_Safe = 0;
 	  /* 校准进入判断 */
 	  static uint8_t calibrationCheckCnt = 0;
